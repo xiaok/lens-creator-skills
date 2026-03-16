@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "share",
+    "name": "分享发现",
+    "description": "Share links, tools, articles, and interesting discoveries from the Lens ecosystem and beyond.",
+    "groupAddress": "0x8A471cFd64355444081D27E0d12feD17C4358efB",
+    "feedAddress": "0x49Ee2De0FD6B4dBE8307933F909fd91E735CE4c2"
+  },
+  {
+    "slug": "pointless",
+    "name": "pointless",
+    "description": "Low-stakes chat, odd thoughts, jokes, and the kind of threads that make a forum feel alive.",
+    "groupAddress": "0xD5C9604b5Fe8CC355edA38329a891406B2562c87",
+    "feedAddress": "0xC3027dD866c4927197604A7f208Efb0e8059aEdE"
+  },
+  {
+    "slug": "slay-the-spire-2",
+    "name": "杀戮尖塔2",
+    "description": "A focused node for Slay the Spire 2 discussion, builds, patch talk, and community theorycrafting.",
+    "groupAddress": "0xE4DcD62Ab8151b1481B3528DcF65f360DE3C533b",
+    "feedAddress": "0x98468c0812C458AedeE827561A49B1A0D10DfE6d"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "name": "lens-forum",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "check": "tsc -p tsconfig.check.json --noEmit",
+    "seed:nodes": "tsx scripts/seed-nodes.ts",
+    "seed:sts2": "tsx scripts/seed-sts2-content.ts"
+  },
+  "dependencies": {
+    "@lens-chain/sdk": "latest",
+    "@lens-chain/storage-client": "latest",
+    "@lens-protocol/client": "latest",
+    "@lens-protocol/metadata": "latest",
+    "@privy-io/react-auth": "latest",
+    "dotenv": "^16.4.5",
+    "next": "^15.5.12",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "viem": "^2.37.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

@@ -139,8 +139,8 @@ Start with:
 
 Add:
 
-- custom feed when the forum needs isolated posting permissions or moderation,
-- group when membership boundaries matter,
+- group for forum nodes and community sections, because each group carries its own community boundary and attached feed,
+- plain custom feed only when the product needs an isolated posting rail without full node/community semantics,
 - custom graph only if follow relationships themselves must be isolated.
 
 ## 4. Authentication Model

@@ -1,6 +1,6 @@
 ---
 name: lens-creator-skills
-description: Build Lens apps on top of the Lens ecosystem, including blogs, forums, X-like social apps, community products, and other social experiences. Use when Codex needs to explain Lens architecture and data structures, set up Lens SDK or GraphQL clients, create or manage accounts, usernames, apps, feeds, graphs, sponsorships, or implement read/write flows such as account onboarding, posting, editing, deleting, following, timelines, and related CRUD. Prefer the default global graph, default/global feed, and default/global namespace unless the user explicitly needs custom app, feed, graph, namespace, or rule logic.
+description: Build Lens apps on top of the Lens ecosystem, including blogs, forums, X-like social apps, community products, and other social experiences. Use when Codex needs to explain Lens architecture and data structures, set up Lens SDK or GraphQL clients, create or manage accounts, usernames, apps, feeds, groups, graphs, sponsorships, or implement read/write flows such as account onboarding, posting, editing, deleting, following, timelines, and related CRUD. Prefer the default global graph, default/global feed, and default/global namespace unless the user explicitly needs custom app, feed, group, graph, namespace, or rule logic.
 ---
 
 # Lens Creator Skills
@@ -46,7 +46,7 @@ Map product ideas to Lens primitives like this:
 
 - `X-like app`: global graph, global/default feed, free usernames, text/image posts, follows, timelines.
 - `Blog`: global graph, global/default feed, article/text/image posts, account pages, optional app branding.
-- `Forum`: start with an app plus feed-based filtering; add a custom feed or group only if the forum needs isolated moderation, membership, or posting rules.
+- `Forum`: prefer `group` for each forum node when the node acts like a community surface. A group gives the node a dedicated membership/governance boundary and an attached feed for posts. Use plain feed filtering only for lightweight topical slices that do not need real node/community semantics.
 - `Community app`: start with global graph plus app identity; add custom feed, group, or sponsorship only when community boundaries require it.
 
 Keep this distinction sharp:
@@ -75,6 +75,7 @@ Define GraphQL fragments early so fetches stay narrow and the returned entity sh
 Use Lens roles precisely:
 
 - `Builder`: create/manage apps, feeds, graphs, sponsorships, and other builder-side configuration.
+- `Builder`: create/manage apps, feeds, groups, graphs, sponsorships, and other builder-side configuration.
 - `Onboarding User`: create a new Lens account before the user owns one.
 - `Account Owner`: perform account-owned operations.
 - `Account Manager`: perform delegated social operations on behalf of an account.
@@ -84,6 +85,7 @@ Remember:
 - End-user login requires an app address.
 - Builder login does not require an app address.
 - Official test apps exist for quick experimentation, so do not block prototypes on app creation.
+- If the product needs consumer login UX such as wallet connect plus email login, add an auth wallet provider such as Privy. Lens covers the social/account layer, not the app's email-login UI layer.
 
 ## Implement the Core Flows
 
@@ -111,6 +113,12 @@ Anchor explanations in the actual entity model:
 - `TimelineItem` wraps a primary post plus timeline context.
 - `Follower` and `Following` records pair an account with a follow timestamp.
 
+When creating app/feed/group metadata:
+
+- do not assume the metadata `name` field is a free-form UI label,
+- for Lens metadata types that validate `lens.name`, use an ASCII-safe identifier such as `share-discoveries` or `slay-the-spire-2`,
+- keep the user-facing display label in app UI state or companion metadata fields if the product needs non-ASCII names.
+
 When reasoning about write permissions:
 
 - Use `account.operations.canFollow` for follow checks.
@@ -124,8 +132,17 @@ Use this CRUD framing:
 
 - `Create account`: log in as onboarding user, validate username, upload account metadata, create the account, switch to account owner.
 - `Read account/post/feed/graph`: fetch narrow shapes with fragments and explicit filters.
+- `Read account/post/feed/group/graph`: fetch narrow shapes with fragments and explicit filters.
 - `Update account/post`: upload new metadata, then update the URI onchain.
 - `Delete post`: submit a delete transaction; explain that chain history still preserves existence.
+
+For forum replies and comment threads:
+
+- create replies with `post(..., { commentOn: { post: <root-or-parent-post-id> } })`,
+- keep replies in the same node feed as the thread when the product models a node as a group-backed feed,
+- read replies with `fetchPostReferences(..., { referencedPost, referenceTypes: ["COMMENT_ON"] })`.
+- if the node is modeled as a `group`, check whether the account must join the group before it can post into the group's attached feed.
+- do not treat every post in the node feed as a top-level thread; exclude posts that already have `commentOn` when building thread lists.
 
 Posts are content-addressed by metadata URI. Updating content usually means uploading new metadata and pointing the post or account to the new URI.
 
@@ -147,6 +164,8 @@ Treat Lens writes as tiered operations:
 
 Prefer the official wallet adapters such as `handleOperationWith(...)`, then wait for indexing with `sessionClient.waitForTransaction(...)`.
 
+If a follow-up step needs the created entity id or slug, do not assume `waitForTransaction(...)` gives you the post id. It confirms the transaction lifecycle; fetch the post back from Lens if the next step needs `post.id`, `post.slug`, or a reference target for `commentOn`.
+
 Do not present every write as a plain self-funded transaction when Lens can sponsor it.
 
 ## Use Sponsorship Deliberately
@@ -161,6 +180,7 @@ Do not:
 
 - recommend a custom graph for a simple social app MVP,
 - recommend a custom feed when client-side filtering is enough,
+- recommend a plain feed for a forum node when the product actually needs a community boundary and per-node identity,
 - conflate app identity with account identity,
 - claim posts live in graphs,
 - ignore `operations` guards before mutations,

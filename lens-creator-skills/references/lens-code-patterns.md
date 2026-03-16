@@ -363,7 +363,9 @@ This is the canonical “defaults-first” app pattern.
 
 ## 15. Create a Custom Feed
 
-Only use this for isolated posting surfaces or feed rules.
+Only use this for isolated posting surfaces or feed rules. For forum nodes or community sections, prefer `group(...)` plus the group's attached feed instead of modeling the node as a standalone feed.
+
+When you create `group(...)` or `feed(...)`, keep the metadata `name` ASCII-safe. In practice that means using identifiers like `share-discoveries` instead of localized UI labels if the metadata validator enforces `lens.name`.
 
 ```ts
 import { feed } from "@lens-protocol/metadata";

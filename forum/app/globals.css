@@ -1,0 +1,264 @@
+:root {
+  --bg: #f2efe7;
+  --surface: rgba(255, 252, 246, 0.94);
+  --surface-strong: #fffdfa;
+  --text: #201918;
+  --muted: #6a5c56;
+  --border: rgba(56, 40, 33, 0.12);
+  --accent: #0b7a6e;
+  --accent-soft: rgba(11, 122, 110, 0.12);
+  --danger: #a3362a;
+  --shadow: 0 18px 60px rgba(63, 47, 39, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    linear-gradient(180deg, rgba(11, 122, 110, 0.06), transparent 20%),
+    linear-gradient(180deg, #f9f6ef 0%, var(--bg) 100%);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code,
+input,
+textarea,
+select,
+button {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.shell {
+  width: min(1160px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 64px;
+}
+
+.hero,
+.panel,
+.thread-card,
+.node-card,
+.thread-detail {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: 34px;
+  margin-bottom: 24px;
+}
+
+.hero h1,
+.thread-detail h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  line-height: 0.95;
+}
+
+.hero p {
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.9fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  padding: 24px;
+}
+
+.panel h2,
+.panel h3,
+.section-title {
+  margin: 0 0 14px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+}
+
+.section-copy,
+.auth-panel p,
+.thread-card p,
+.thread-detail .body,
+.meta-line {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.node-grid,
+.thread-list {
+  display: grid;
+  gap: 16px;
+}
+
+.node-card,
+.thread-card {
+  padding: 18px;
+}
+
+.node-card h3,
+.thread-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.28rem;
+}
+
+.meta-chip-row,
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.meta-chip,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.82rem;
+}
+
+.thread-header,
+.auth-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.stack {
+  display: grid;
+  gap: 14px;
+}
+
+.action-row {
+  margin: 14px 0 18px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.92rem;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-strong);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.action-button,
+.secondary-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 0.92rem;
+}
+
+.action-button {
+  background: var(--accent);
+  color: white;
+}
+
+.secondary-button {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.status-ok {
+  color: var(--accent);
+}
+
+.status-error {
+  color: var(--danger);
+}
+
+.thread-detail {
+  padding: 34px;
+}
+
+.thread-detail .body {
+  margin-top: 24px;
+  white-space: pre-wrap;
+  color: var(--text);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    width: min(100% - 20px, 1160px);
+    padding-top: 18px;
+  }
+
+  .hero,
+  .panel,
+  .thread-card,
+  .node-card,
+  .thread-detail {
+    border-radius: 18px;
+  }
+
+  .thread-header,
+  .auth-header {
+    flex-direction: column;
+  }
+}
