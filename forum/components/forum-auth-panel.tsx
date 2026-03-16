@@ -16,13 +16,14 @@ type ManagedAccount = Awaited<ReturnType<typeof fetchManagedAccounts>>[number];
 export function ForumAuthPanel({ nodes }: Props) {
   if (!privyAppId) {
     return (
-      <section className="panel auth-panel">
-        <h2>Auth setup required</h2>
-        <p>
-          To enable wallet + email login, create a Privy app and put its app id into
-          <code> NEXT_PUBLIC_PRIVY_APP_ID</code>.
-        </p>
-      </section>
+      <div className="sidebar-panel">
+        <div className="sidebar-title">⚙️ 需要配置</div>
+        <div className="sidebar-content">
+          <p style={{ margin: 0, fontSize: 12, color: "var(--text-secondary)" }}>
+            请设置 NEXT_PUBLIC_PRIVY_APP_ID
+          </p>
+        </div>
+      </div>
     );
   }
 
@@ -158,11 +159,11 @@ function ForumAuthPanelInner({ nodes }: Props) {
       });
       setTitle("");
       setContent("");
-      setMessage(`Thread submitted. Transaction hash: ${txHash}`);
+      setMessage(`发布成功！`);
       router.refresh();
     } catch (cause) {
       const message = cause instanceof Error ? cause.message : "Failed to publish thread.";
-      setError(message.includes("Not all rules satisfied") ? "This node requires group membership before posting. The app now auto-joins on publish; please try once more if your first attempt raced membership indexing." : message);
+      setError(message.includes("Not all rules satisfied") ? "需要先加入节点小组，请重试。" : message);
     } finally {
       setPublishing(false);
     }
@@ -170,114 +171,124 @@ function ForumAuthPanelInner({ nodes }: Props) {
 
   if (!ready) {
     return (
-      <section className="panel auth-panel">
-        <h2>Loading auth</h2>
-        <p>Initializing Privy and wallet state...</p>
-      </section>
+      <div className="sidebar-panel">
+        <div className="sidebar-title">⚙️ 加载中</div>
+        <div className="sidebar-content">
+          <p style={{ margin: 0, fontSize: 12, color: "var(--text-secondary)" }}>正在初始化...</p>
+        </div>
+      </div>
     );
   }
 
   if (!authenticated) {
     return (
-      <section className="panel auth-panel">
-        <h2>Register / log in</h2>
-        <p>
-          Use email or wallet login. Privy can create an embedded wallet for email-only users, so the
-          Lens registration step still has an EVM wallet to work with.
-        </p>
-        <button className="action-button" onClick={handleConnect} type="button">
-          Continue with email or wallet
-        </button>
-      </section>
+      <div className="sidebar-panel">
+        <div className="sidebar-title">⚔️ 登录 / 注册</div>
+        <div className="sidebar-content">
+          <p style={{ margin: "0 0 12px", fontSize: 12, color: "var(--text-secondary)" }}>
+            登录后可以发帖和回复
+          </p>
+          <button className="btn btn-primary" onClick={handleConnect} style={{ width: "100%" }}>
+            邮箱或钱包登录
+          </button>
+        </div>
+      </div>
     );
   }
 
   return (
-    <section className="panel auth-panel">
-      <div className="auth-header">
-        <div>
-          <h2>Forum identity</h2>
-          <p>{user?.email?.address || activeWallet?.address || "Authenticated"}</p>
+    <div className="sidebar-panel">
+      <div className="sidebar-title">⚔️ 社区账号</div>
+      <div className="sidebar-content">
+        <div style={{ marginBottom: 12, fontSize: 13 }}>
+          <span style={{ color: "var(--text-secondary)" }}>{user?.email?.address || activeWallet?.address?.slice(0, 8) + "..."}</span>
         </div>
-        <button className="secondary-button" onClick={logout} type="button">
-          Log out
-        </button>
-      </div>
 
-      <div className="action-row">
-        <button
-          className="secondary-button"
-          disabled={!activeWallet || loadingAccounts}
-          onClick={() => activeWallet && refreshAccounts(activeWallet)}
-          type="button"
-        >
-          {loadingAccounts ? "Refreshing..." : "Load Lens accounts"}
-        </button>
-      </div>
+        {accounts.length === 0 ? (
+          <div>
+            <div className="form-group">
+              <label>用户名</label>
+              <input
+                onChange={(event) => setUsername(event.target.value)}
+                placeholder="forumname"
+                value={username}
+              />
+            </div>
+            <div className="form-group">
+              <label>显示名称</label>
+              <input
+                onChange={(event) => setDisplayName(event.target.value)}
+                placeholder="你的名字"
+                value={displayName}
+              />
+            </div>
+            <button className="btn btn-primary" disabled={registering} onClick={handleRegister} style={{ width: "100%" }}>
+              {registering ? "创建中..." : "创建账号"}
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div className="form-group">
+              <label>选择账号</label>
+              <select onChange={(event) => setSelectedAccount(event.target.value)} value={selectedAccount}>
+                {accounts.map((entry) => (
+                  <option key={entry.account.address} value={entry.account.address}>
+                    {entry.account.username?.value || entry.account.address.slice(0, 10) + "..."}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label>发布节点</label>
+              <select onChange={(event) => setSelectedNode(event.target.value)} value={selectedNode}>
+                {nodes.map((node) => (
+                  <option key={node.slug} value={node.slug}>
+                    {node.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label>标题</label>
+              <input
+                onChange={(event) => setTitle(event.target.value)}
+                placeholder="标题"
+                value={title}
+              />
+            </div>
+            <div className="form-group">
+              <label>内容</label>
+              <textarea
+                onChange={(event) => setContent(event.target.value)}
+                placeholder="分享你的想法..."
+                rows={4}
+                value={content}
+                style={{ resize: "vertical" }}
+              />
+            </div>
+            <button className="btn btn-primary" disabled={publishing} onClick={handlePublish} style={{ width: "100%" }}>
+              {publishing ? "发布中..." : "发布主题"}
+            </button>
+          </div>
+        )}
 
-      {accounts.length === 0 ? (
-        <div className="stack">
-          <h3>Create your Lens forum account</h3>
-          <label>
-            Username
-            <input onChange={(event) => setUsername(event.target.value)} placeholder="forumname" value={username} />
-          </label>
-          <label>
-            Display name
-            <input
-              onChange={(event) => setDisplayName(event.target.value)}
-              placeholder="Forum User"
-              value={displayName}
-            />
-          </label>
-          <button className="action-button" disabled={registering} onClick={handleRegister} type="button">
-            {registering ? "Creating Lens account..." : "Create Lens account"}
+        <div style={{ marginTop: 12, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <button
+            className="btn btn-secondary"
+            disabled={!activeWallet || loadingAccounts}
+            onClick={() => activeWallet && refreshAccounts(activeWallet)}
+            style={{ padding: "6px 12px", fontSize: 12 }}
+          >
+            {loadingAccounts ? "刷新..." : "刷新账号"}
+          </button>
+          <button className="btn btn-secondary" onClick={logout} style={{ padding: "6px 12px", fontSize: 12 }}>
+            登出
           </button>
         </div>
-      ) : (
-        <div className="stack">
-          <h3>Publish a new thread</h3>
-          <label>
-            Lens account
-            <select onChange={(event) => setSelectedAccount(event.target.value)} value={selectedAccount}>
-              {accounts.map((entry) => (
-                <option key={entry.account.address} value={entry.account.address}>
-                  {entry.account.username?.value || entry.account.address}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Node
-            <select onChange={(event) => setSelectedNode(event.target.value)} value={selectedNode}>
-              {nodes.map((node) => (
-                <option key={node.slug} value={node.slug}>
-                  {node.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Thread title
-            <input onChange={(event) => setTitle(event.target.value)} placeholder="What are you discussing?" value={title} />
-          </label>
-          <label>
-            Thread body
-            <textarea
-              onChange={(event) => setContent(event.target.value)}
-              placeholder="Write your post in markdown-friendly text."
-              rows={8}
-              value={content}
-            />
-          </label>
-          <button className="action-button" disabled={publishing} onClick={handlePublish} type="button">
-            {publishing ? "Publishing..." : "Publish thread"}
-          </button>
-        </div>
-      )}
 
-      {message ? <p className="status-ok">{message}</p> : null}
-      {error ? <p className="status-error">{error}</p> : null}
-    </section>
+        {message ? <p className="status-ok" style={{ marginTop: 12 }}>{message}</p> : null}
+        {error ? <p className="status-error" style={{ marginTop: 12 }}>{error}</p> : null}
+      </div>
+    </div>
   );
 }

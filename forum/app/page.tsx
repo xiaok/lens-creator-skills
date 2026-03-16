@@ -4,36 +4,76 @@ import { getForumNodes, listLatestThreads } from "../lib/lens-public";
 
 export const dynamic = "force-dynamic";
 
+const SPIRE_ICONS = ["⚔️", "🛡️", "🧪", "💀", "👑", "🔥", "❄️", "⚡"];
+
+function getNodeColor(index: number) {
+  const colors = ["#8b0000", "#1a1a1a", "#4a1a6b", "#0d5c8b", "#6b8e23", "#d4a017"];
+  return colors[index % colors.length];
+}
+
 export default async function HomePage() {
   const nodes = getForumNodes();
   const threads = await listLatestThreads();
 
   return (
-    <main className="shell">
-      <section className="hero">
-        <p className="eyebrow">Lens Forum Demo</p>
-        <h1>V2EX-style forum, built on Lens groups.</h1>
-        <p>
-          Each forum node is a Lens <code>group</code>. That gives every node a real community boundary,
-          room for moderation and membership rules later, and a dedicated posting surface without forcing us
-          to invent a parallel category model offchain.
-        </p>
-      </section>
-
-      <div className="dashboard">
-        <section className="panel">
-          <h2 className="section-title">Nodes</h2>
-          <div className="node-grid">
-            {nodes.length === 0 ? (
-              <p className="section-copy">
-                No nodes are seeded yet. Run <code>npm run seed:nodes</code> first.
-              </p>
+    <main className="main">
+      <div className="content">
+        <div className="panel">
+          <div className="panel-header">
+            <span>全部主题</span>
+            <Link href="/">热门</Link>
+          </div>
+          <div className="panel-content">
+            {threads.length === 0 ? (
+              <div className="status-line">
+                暂无主题，请运行 <code>npm run seed:nodes</code> 初始化数据
+              </div>
             ) : (
-              nodes.map((node) => (
-                <article key={node.slug} className="node-card">
-                  <div className="meta-chip-row">
-                    <span className="meta-chip">group node</span>
+              threads.map((thread, idx) => (
+                <article key={thread.id} className="thread-item">
+                  <div className="thread-avatar">
+                    {SPIRE_ICONS[idx % SPIRE_ICONS.length]}
                   </div>
+                  <div className="thread-main">
+                    <div className="thread-title">
+                      <Link href={`/t/${thread.id}`}>{thread.title}</Link>
+                    </div>
+                    <div className="thread-meta">
+                      <Link href={`/nodes/${thread.nodeSlug}`} className="thread-node">
+                        {thread.nodeName}
+                      </Link>
+                      <span> · </span>
+                      <Link href="/">{thread.authorName}</Link>
+                      <span> · </span>
+                      <span>{thread.publishedLabel}</span>
+                      {thread.tags.length > 0 && (
+                        <>
+                          <span> · </span>
+                          {thread.tags.map((tag) => (
+                            <span key={tag} className="tag">#{tag}</span>
+                          ))}
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              ))
+            )}
+          </div>
+        </div>
+
+        <LazyForumAuthShell nodes={nodes} />
+
+        <div className="panel" style={{ marginTop: 16 }}>
+          <div className="panel-header">
+            <span>节点分类</span>
+          </div>
+          <div className="panel-content">
+            {nodes.length === 0 ? (
+              <div className="status-line">暂无节点</div>
+            ) : (
+              nodes.map((node, idx) => (
+                <article key={node.slug} className="node-card">
                   <h3>
                     <Link href={`/nodes/${node.slug}`}>{node.name}</Link>
                   </h3>
@@ -42,42 +82,38 @@ export default async function HomePage() {
               ))
             )}
           </div>
-        </section>
-
-        <LazyForumAuthShell nodes={nodes} />
+        </div>
       </div>
 
-      <section className="panel" style={{ marginTop: 24 }}>
-        <h2 className="section-title">Latest threads</h2>
-        <div className="thread-list">
-          {threads.length === 0 ? (
-            <p className="section-copy">No threads yet. Seed nodes, log in, and publish the first one.</p>
-          ) : (
-            threads.map((thread) => (
-              <article key={thread.id} className="thread-card">
-                <div className="thread-header">
-                  <div>
-                    <div className="meta-line">
-                      {thread.nodeName} · {thread.authorName} · {thread.publishedLabel}
-                    </div>
-                    <h3>
-                      <Link href={`/t/${thread.id}`}>{thread.title}</Link>
-                    </h3>
-                  </div>
-                  <div className="tag-row">
-                    {thread.tags.map((tag) => (
-                      <span key={tag} className="tag">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <p>{thread.summary}</p>
-              </article>
-            ))
-          )}
+      <aside className="sidebar">
+        <div className="sidebar-panel">
+          <div className="sidebar-title">🎮 杀戮尖塔</div>
+          <div className="sidebar-content">
+            <Link href="/" className="sidebar-item">游戏讨论</Link>
+            <Link href="/" className="sidebar-item">卡组构建</Link>
+            <Link href="/" className="sidebar-item">Boss 攻略</Link>
+            <Link href="/" className="sidebar-item">角色选择</Link>
+            <Link href="/" className="sidebar-item">遗物评测</Link>
+          </div>
         </div>
-      </section>
+
+        <div className="sidebar-panel">
+          <div className="sidebar-title">📁 节点</div>
+          <div className="sidebar-content">
+            {nodes.map((node, idx) => (
+              <Link key={node.slug} href={`/nodes/${node.slug}`} className="node-item-sidebar">
+                <span
+                  className="node-icon"
+                  style={{ background: getNodeColor(idx) }}
+                >
+                  {node.name[0]}
+                </span>
+                {node.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </aside>
     </main>
   );
 }

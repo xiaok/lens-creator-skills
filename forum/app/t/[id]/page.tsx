@@ -25,45 +25,98 @@ export default async function ThreadPage({
   }
 
   return (
-    <main className="shell">
-      <Link className="back-link" href={`/nodes/${thread.nodeSlug}`}>
-        Back to {thread.nodeName}
-      </Link>
+    <main className="main">
+      <div className="content">
+        <Link className="back-link" href={`/nodes/${thread.nodeSlug}`}>
+          ← 返回 {thread.nodeName}
+        </Link>
 
-      <article className="thread-detail">
-        <div className="meta-line">
-          {thread.nodeName} · {thread.authorName} · {thread.publishedLabel}
-        </div>
-        <h1>{thread.title}</h1>
-        <div className="tag-row" style={{ marginTop: 18 }}>
-          {thread.tags.map((tag) => (
-            <span key={tag} className="tag">
-              #{tag}
-            </span>
-          ))}
-        </div>
-        <div className="body">{thread.content}</div>
-      </article>
-
-      <LazyThreadReplyShell node={node} thread={thread} />
-
-      <section className="panel">
-        <h2 className="section-title">Replies</h2>
-        <div className="thread-list">
-          {replies.length === 0 ? (
-            <p className="section-copy">No replies yet.</p>
-          ) : (
-            replies.map((reply) => (
-              <article key={reply.id} className="thread-card">
-                <div className="meta-line">
-                  {reply.authorName} · {reply.publishedLabel}
+        <div className="panel">
+          <div className="breadcrumb">
+            <Link href="/">首页</Link>
+            <span> / </span>
+            <Link href={`/nodes/${thread.nodeSlug}`}>{thread.nodeName}</Link>
+            <span> / </span>
+            <span>主题详情</span>
+          </div>
+          <div className="thread-detail">
+            <div className="thread-header">
+              <h1>{thread.title}</h1>
+              <div className="thread-meta">
+                <Link href={`/nodes/${thread.nodeSlug}`} className="thread-node">
+                  {thread.nodeName}
+                </Link>
+                <span> · </span>
+                <Link href="/">{thread.authorName}</Link>
+                <span> · </span>
+                <span>{thread.publishedLabel}</span>
+              </div>
+              {thread.tags.length > 0 && (
+                <div className="tag-row">
+                  {thread.tags.map((tag) => (
+                    <span key={tag} className="tag">#{tag}</span>
+                  ))}
                 </div>
-                <div className="body">{reply.content}</div>
-              </article>
-            ))
-          )}
+              )}
+            </div>
+            <div className="reply-content" style={{ marginTop: 16 }}>
+              {thread.content}
+            </div>
+          </div>
         </div>
-      </section>
+
+        <LazyThreadReplyShell node={node} thread={thread} />
+
+        <div className="panel" style={{ marginTop: 16 }}>
+          <div className="panel-header">
+            <span>回复 ({replies.length})</span>
+          </div>
+          <div className="panel-content">
+            {replies.length === 0 ? (
+              <div className="status-line">暂无回复</div>
+            ) : (
+              replies.map((reply, idx) => (
+                <article key={reply.id} className="reply-item">
+                  <div className="reply-header">
+                    <div className="reply-avatar">
+                      {reply.authorName[0].toUpperCase()}
+                    </div>
+                    <Link href="/" className="reply-author">{reply.authorName}</Link>
+                    <span>·</span>
+                    <span>{reply.publishedLabel}</span>
+                    <span style={{ marginLeft: "auto" }}>#{idx + 1}</span>
+                  </div>
+                  <div className="reply-content">
+                    {reply.content}
+                  </div>
+                </article>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+
+      <aside className="sidebar">
+        <div className="sidebar-panel">
+          <div className="sidebar-title">⚔️ 杀戮尖塔</div>
+          <div className="sidebar-content">
+            <Link href="/" className="sidebar-item">🏠 返回首页</Link>
+            <Link href={`/nodes/${thread.nodeSlug}`} className="sidebar-item">
+              📁 {thread.nodeName}
+            </Link>
+            <Link href="/" className="sidebar-item">🔥 热门主题</Link>
+          </div>
+        </div>
+
+        <div className="sidebar-panel">
+          <div className="sidebar-title">💡 快速链接</div>
+          <div className="sidebar-content">
+            <Link href="/" className="sidebar-item">卡牌图鉴</Link>
+            <Link href="/" className="sidebar-item">遗物大全</Link>
+            <Link href="/" className="sidebar-item">Boss 攻略</Link>
+          </div>
+        </div>
+      </aside>
     </main>
   );
 }
