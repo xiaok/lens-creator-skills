@@ -2,6 +2,8 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [繁體中文](./README.zh-TW.md) | [日本語](./README.ja.md)
 
+![Lens Creator Skills banner](./assets/image.png)
+
 使用 agent 建立 Lens 應用。
 
 這個倉庫提供一個 agent skill，用來幫助使用者建立基於 [Lens](https://lens.xyz/) 的應用，例如部落格、論壇、X-like 社交產品、陌生人社交產品與熟人社群產品。它採用 Lens 的預設優先架構，讓 agent 能用更少的基礎設施完成真實可用的產品。

@@ -2,6 +2,8 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [繁體中文](./README.zh-TW.md) | [日本語](./README.ja.md)
 
+![Lens Creator Skills banner](./assets/image.png)
+
 Build Lens apps with an agent.
 
 This repository contains an agent skill that helps users create [Lens](https://lens.xyz/) apps such as blogs, forums, X-like social apps, anonymous social apps, and private-community social apps. It is designed around a defaults-first Lens architecture so an agent can help you ship faster with less infrastructure.

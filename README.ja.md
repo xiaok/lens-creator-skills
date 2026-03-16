@@ -2,6 +2,8 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [繁體中文](./README.zh-TW.md) | [日本語](./README.ja.md)
 
+![Lens Creator Skills banner](./assets/image.png)
+
 agent を使って Lens アプリを作るための skill です。
 
 このリポジトリには、[Lens](https://lens.xyz/) ベースのアプリを作るための agent skill が含まれています。ブログ、フォーラム、X-like なソーシャルアプリ、匿名 SNS、クローズドコミュニティ向けアプリなどを対象にしており、Lens の defaults-first アーキテクチャを前提として、少ないインフラで実運用できるプロダクトを素早く実装できるように設計されています。
