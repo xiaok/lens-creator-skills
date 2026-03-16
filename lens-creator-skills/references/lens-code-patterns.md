@@ -2,6 +2,14 @@
 
 Use these patterns as the default TypeScript reference. Adjust imports only if the upstream SDK changes.
 
+## 0. Install the Viem Peer Dependency
+
+If the implementation imports `@lens-protocol/client/viem`, also install `@lens-chain/sdk`.
+
+```bash
+npm install @lens-protocol/client @lens-protocol/metadata @lens-chain/storage-client @lens-chain/sdk viem
+```
+
 ## 1. Create a Public Client
 
 ```ts
@@ -177,6 +185,26 @@ if (result.isErr()) {
 }
 ```
 
+## 8.1 Create a Blog Article Post
+
+Use `article(...)` for a blog instead of `textOnly(...)`.
+
+```ts
+import { article } from "@lens-protocol/metadata";
+
+const metadata = article({
+  title: "Lens Blog Post",
+  content: "# Hello Lens\n\nThis is a blog post.",
+  tags: ["blog"],
+});
+```
+
+Important:
+
+- inject the blog tag yourself,
+- do not assume the current `article(...)` helper supports a custom `slug`,
+- use the `post.slug` value returned by Lens, or fall back to `post.id`, when building detail routes.
+
 ## 9. Fetch Posts
 
 ```ts
@@ -197,6 +225,12 @@ const { items, pageInfo } = result.value;
 ```
 
 If the exact action name or filter shape changes upstream, align to the current Lens SDK docs and preserve the same account/post/filter model.
+
+For a simple blog, a practical default is:
+
+1. fetch posts for one author,
+2. inspect `post.metadata.tags`,
+3. keep only posts tagged with `blog`.
 
 ## 10. Edit a Post
 

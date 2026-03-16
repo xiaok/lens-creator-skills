@@ -55,8 +55,14 @@
 - `Update`：先生成并上传新 metadata，再更新 URI
 - `Delete post`：删除的是可用状态，不是擦除链上历史
 
+做博客时再补两条：
+
+- 发文优先用 `article(...)` metadata，不要默认用 `textOnly(...)`
+- 当前 SDK 下不要假设 `article` 可以直接写自定义 `slug`，详情页路由优先用 Lens 返回的 `post.slug` 或 `post.id`
+
 ## 实现时必须注意
 
+- 用 `@lens-protocol/client/viem` 时，要额外安装 `@lens-chain/sdk`
 - 变更前先检查 `operations`
 - `canFollow`、`canEdit`、`canDelete` 都要判断
 - `ValidationUnknown` 默认当作不可执行，除非任务明确要求支持自定义规则

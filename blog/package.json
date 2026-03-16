@@ -1,0 +1,32 @@
+{
+  "name": "lens-blog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "publish": "tsx scripts/publish.ts",
+    "create-account": "tsx scripts/create-account.ts",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@lens-chain/sdk": "^1.0.3",
+    "@lens-chain/storage-client": "latest",
+    "@lens-protocol/client": "latest",
+    "@lens-protocol/metadata": "latest",
+    "dotenv": "^16.4.5",
+    "next": "^15.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "viem": "^2.23.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

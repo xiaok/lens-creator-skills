@@ -66,6 +66,8 @@ Choose the highest-level interface that matches the task:
 - Use `@lens-protocol/client` for server actions, custom workflows, and explicit operation handling.
 - Use raw GraphQL only when the user explicitly needs direct queries, custom tooling, or SDK-independent integration.
 
+If the implementation uses `@lens-protocol/client/viem`, also install `@lens-chain/sdk`. The current viem adapter depends on Lens chain definitions from that package.
+
 Define GraphQL fragments early so fetches stay narrow and the returned entity shapes are obvious.
 
 ## Use the Correct Authentication Role
@@ -126,6 +128,14 @@ Use this CRUD framing:
 - `Delete post`: submit a delete transaction; explain that chain history still preserves existence.
 
 Posts are content-addressed by metadata URI. Updating content usually means uploading new metadata and pointing the post or account to the new URI.
+
+For blog-style apps:
+
+- prefer `article(...)` metadata instead of `textOnly(...)`,
+- tag blog posts explicitly, for example with `blog`,
+- fetch one author’s posts and filter by `metadata.tags` if a dedicated tag filter is not already part of the chosen query shape,
+- do not assume article metadata supports a custom `slug` field in the current SDK,
+- use `post.slug` or `post.id` from Lens read responses for detail routes.
 
 ## Handle Transactions Properly
 
