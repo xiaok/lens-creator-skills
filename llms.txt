@@ -1,0 +1,3284 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+================================================================
+File Summary
+================================================================
+
+Purpose:
+--------
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+File Format:
+------------
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+4. Multiple file entries, each consisting of:
+  a. A separator line (================)
+  b. The file path (File: path/to/file)
+  c. Another separator line
+  d. The full contents of the file
+  e. A blank line
+
+Usage Guidelines:
+-----------------
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+Notes:
+------
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: src/pages/chain/**/*.mdx, src/pages/protocol/**/*.mdx, src/pages/storage/**/*.mdx
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+
+Additional Info:
+----------------
+
+================================================================
+Directory Structure
+================================================================
+src/
+  pages/
+    chain/
+      integrations/
+        connect-wallet.mdx
+        ethers.mdx
+        viem.mdx
+        web3py.mdx
+      resources/
+        changelog.mdx
+        contracts.mdx
+        developer-portal.mdx
+        differences-from-ethereum.mdx
+        network-information.mdx
+      smart-contracts/
+        foundry.mdx
+        hardhat.mdx
+      tools/
+        account-abstraction/
+          safe.mdx
+          thirdweb.mdx
+          zksync.mdx
+        bigquery/
+          costs.mdx
+          examples.mdx
+          introduction.mdx
+          schemas.mdx
+          setup.mdx
+        bridging/
+          across.mdx
+          lens.mdx
+          zksync.mdx
+        cross-chain/
+          ccip.mdx
+          zksync-elastic.mdx
+        data-indexers/
+          covalent.mdx
+          dune.mdx
+          rindexer.mdx
+          the-graph.mdx
+          thirdweb.mdx
+        defi/
+          uniswap.mdx
+        faucets/
+          alchemy.mdx
+          lenscan.mdx
+          thirdweb.mdx
+        on-ramp/
+          halliday.mdx
+          thirdweb.mdx
+        oracles/
+          chainlink.mdx
+          redstone.mdx
+        rpc/
+          alchemy.mdx
+          chainstack.mdx
+          drpc.mdx
+          public.mdx
+          quicknode.mdx
+          tenderly.mdx
+          thirdweb.mdx
+        smart-contract-development/
+          smart-contract-development.mdx
+          tenderly.mdx
+          thirdweb.mdx
+      best-practices.mdx
+      overview.mdx
+      running-a-node.mdx
+      running-an-archive-node.mdx
+      using-lens-chain.mdx
+    protocol/
+      accounts/
+        actions.mdx
+        block.mdx
+        create.mdx
+        feedback.mdx
+        fetch.mdx
+        funds.mdx
+        manager.mdx
+        metadata.mdx
+        mute.mdx
+        notifications.mdx
+      apps/
+        authorization-workflows.mdx
+        create.mdx
+        fetch.mdx
+        index.mdx
+        manage.mdx
+      best-practices/
+        content-licensing.mdx
+        custom-fragments.mdx
+        erc20-approval.mdx
+        error-handling.mdx
+        mentions.mdx
+        metadata-standards.mdx
+        pagination.mdx
+        team-management.mdx
+        transaction-lifecycle.mdx
+      bigquery/
+        costs.mdx
+        examples.mdx
+        introduction.mdx
+        schemas.mdx
+        setup.mdx
+      concepts/
+        account.mdx
+        actions.mdx
+        app.mdx
+        feed.mdx
+        graph.mdx
+        group.mdx
+        rules.mdx
+        sponsorship.mdx
+        username.mdx
+      feeds/
+        bookmarks.mdx
+        boost-engagement.mdx
+        custom-feeds.mdx
+        delete-post.mdx
+        edit-post.mdx
+        feed-rules.mdx
+        feedback.mdx
+        fetch-posts.mdx
+        moderating.mdx
+        post-actions.mdx
+        post-rules.mdx
+        post.mdx
+        timelines.mdx
+      getting-started/
+        graphql.mdx
+        react.mdx
+        typescript.mdx
+      graphs/
+        custom-graphs.mdx
+        follow-rules.mdx
+        follow-unfollow.mdx
+        graph-rules.mdx
+        relationships.mdx
+      groups/
+        banned-accounts.mdx
+        create.mdx
+        fetch-members.mdx
+        fetch.mdx
+        join.mdx
+        manage.mdx
+        membership-approvals.mdx
+        rules.mdx
+      migration/
+        api.mdx
+        database.mdx
+        from-polygon.mdx
+        overview.mdx
+        sdk.mdx
+      resources/
+        changelog.mdx
+        contracts.mdx
+      sponsorships/
+        fetch.mdx
+        funding.mdx
+        managing.mdx
+        sponsoring-transactions.mdx
+      tools/
+        balances.mdx
+        s3.mdx
+        sns-notifications.mdx
+      tutorials/
+        post-an-image.mdx
+      usernames/
+        assign.mdx
+        create.mdx
+        custom-namespaces.mdx
+        fetch.mdx
+        namespace-rules.mdx
+        reserved-usernames.mdx
+      authentication.mdx
+      index.mdx
+      user-rewards.mdx
+    storage/
+      resources/
+        changelog.mdx
+        glossary.mdx
+      usage/
+        delete.mdx
+        download.mdx
+        edit.mdx
+        getting-started.mdx
+        upload.mdx
+      index.mdx
+
+================================================================
+Files
+================================================================
+
+================
+File: src/pages/chain/integrations/connect-wallet.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Connect Wallet
+
+This guide will walk you through integrating wallet connection into your application using ConnectKit. ConnectKit provides an easy-to-use interface for connecting Ethereum wallets into web applications. We will configure it specifically for the Lens Testnet.
+
+## Installation
+
+Install ConnectKit, its required dependencies, and the Lens Chain SDK with package manager of choice:
+
+```bash
+npm install connectkit wagmi viem@2.x @tanstack/react-query @lens-chain/sdk@latest
+```
+
+## API Keys
+
+ConnectKit uses WalletConnect's SDK, which requires a projectId. You can create one for free at [WalletConnect Cloud](https://cloud.reown.com).
+
+## Implementation
+
+<Steps>
+
+### Setting Up Web3Provider
+
+Create a new file `Web3Provider.tsx` and define the required configuration.
+
+```ts filename="Web3Provider.tsx"
+"use client";
+
+import { WagmiProvider, createConfig, http } from "wagmi";
+import { chains } from "@lens-chain/sdk/viem";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ConnectKitProvider, getDefaultConfig } from "connectkit";
+
+const config = createConfig(
+  getDefaultConfig({
+    chains: [chains.mainnet, chains.testnet],
+    transports: {
+      [chains.mainnet.id]: http(chains.mainnet.rpcUrls.default.http[0]!),
+      [chains.testnet.id]: http(chains.testnet.rpcUrls.default.http[0]!),
+    },
+    walletConnectProjectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
+    appName: "Lens Testing App",
+    appDescription: "A sample app integrating Lens Testing wallet connection.",
+    appUrl: "https://yourapp.com",
+    appIcon: "https://yourapp.com/icon.png",
+  })
+);
+
+const queryClient = new QueryClient();
+
+export const Web3Provider = ({ children }) => {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <ConnectKitProvider>{children}</ConnectKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+};
+```
+
+### Wrapping Your App with Web3Provider
+
+Modify `App.tsx` to use the newly created `Web3Provider`:
+
+```ts filename="App.tsx"
+import { Web3Provider } from "./Web3Provider";
+import { ConnectKitButton } from "connectkit";
+
+const App = () => {
+  return (
+    <Web3Provider>
+      <ConnectKitButton />
+    </Web3Provider>
+  );
+};
+
+export default App;
+```
+
+### Accessing Connected Wallet Information
+
+To interact with the connected wallet, use the `useAccount` hook from `wagmi`:
+
+```ts
+import { useAccount } from "wagmi";
+
+const WalletInfo = () => {
+  const { address, isConnecting, isDisconnected } = useAccount();
+
+  if (isConnecting) return <div>Connecting...</div>;
+  if (isDisconnected) return <div>Disconnected</div>;
+  return <div>Connected Wallet: {address}</div>;
+};
+
+export default WalletInfo;
+```
+
+</Steps>
+
+## Additional Build Tooling Setup
+
+Some build tools require additional setup to work with ConnectKit.
+
+### Next.js
+
+ConnectKit uses [WalletConnect](https://walletconnect.com)'s SDK to help with connecting wallets. WalletConnect 2.0 pulls in Node.js dependencies that Next.js does not support by default.
+
+You can mitigate this by adding the following to your next.config.js file:
+
+```ts filename="next.config.js"
+module.exports = {
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, net: false, tls: false };
+    return config;
+  },
+};
+```
+
+### Next.js App Router
+
+If using Next.js App Router, or any framework that supports React Server Components, you will need to include the `"use client"` directive at the beginning of your Web3Provider file.
+
+```ts filename="Web3Provider.tsx"
+
+"use client"
+
+...
+
+export const Web3Provider = ({ children }) => {
+  return (
+    ...
+  );
+};
+```
+
+## Resources
+
+- [Lens Chain Example Repos](https://github.com/lens-protocol/network-examples/)
+- [Next.js Additional Setup](https://docs.family.co/connectkit/getting-started#getting-started-nextjs)
+- [ConnectKit Documentation](https://docs.family.co/)
+- [Viem Guide](./viem)
+- [Ethers Guide](./ethers)
+
+By following these steps, you have successfully integrated ConnectKit with the Lens Testnet to enable wallet connections in your application.
+
+================
+File: src/pages/chain/integrations/ethers.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Ethers SDK
+
+Interact with Lens Chain using [ethers.js](https://docs.ethers.io/). A template web app can be found [here](https://github.com/lens-protocol/network-examples).
+
+---
+
+The Lens Chain SDK provides support for [ethers.js](https://docs.ethers.io/), a widely-used JavaScript library for interacting with EVM blockchains. This is achieved by building upon [ZKsync-ethers v6](https://docs.zksync.io/sdk/js/ethers/v6/getting-started), the official ZKsync SDK for ethers.js.
+
+This section assumes you are familiar with the ethers concepts of _Provider_ and _Signer_:
+
+- A **Provider** is a read-only connection to the blockchain, which allows querying the blockchain state, such as account, block or transaction details, querying event logs or evaluating read-only code using call.
+- A **Signer** wraps all operations that interact with an account. An account generally has a private key located somewhere, which can be used to sign a variety of types of payloads.
+
+## Getting Started
+
+<Steps>
+
+### Install ZKsync-ethers
+
+First, install [ZKsync-ethers](<(https://docs.zksync.io/sdk/js/ethers/v6/getting-started)>) package:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm install zksync-ethers ethers@6
+```
+
+```bash filename="yarn"
+yarn add zksync-ethers ethers@6
+```
+
+```bash filename="pnpm"
+pnpm add zksync-ethers ethers@6
+```
+
+</MultiCodeBlock>
+
+<Alert tone="info" solid>
+  ethers.js version 6 is a peer dependency of `zksync-ethers` package. Make sure
+  to install it alongside ZKsync-ethers.
+</Alert>
+
+### Install SDK
+
+Then, install the `@lens-chain/sdk` package:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm install @lens-chain/sdk@latest
+```
+
+```bash filename="yarn"
+yarn add @lens-chain/sdk@latest
+```
+
+```bash filename="pnpm"
+pnpm add @lens-chain/sdk@latest
+```
+
+</MultiCodeBlock>
+
+### Create Your Providers
+
+Next, create the providers to interact with the Lens Chain and the corresponding L1 (an Ethereum chain):
+
+<Tabs>
+  <TabItem value="json-rpc-provider" label="JsonRpcProvider">
+    To interact with the Lens Chain, use the SDK's `getDefaultProvider` function. This creates a specialized [JsonRpcProvider](https://docs.ethers.org/v6/api/providers/jsonrpc/#JsonRpcProvider) instance that supports the `lens` and `zks` RPC method namespaces.
+
+    For interactions with Ethereum L1, create an ethers Provider connected to the corresponding network (Sepolia for testnets). The example below uses the [getDefaultProvider](https://docs.ethers.org/v6/api/providers/#getDefaultProvider) function from the `ethers` package.
+
+    ```ts filename="providers.ts"
+    import { getDefaultProvider, Network } from "@lens-chain/sdk/ethers";
+    import { ethers } from "ethers";
+
+    // Lens Chain (L2)
+    export const lensProvider = getDefaultProvider(Network.Testnet);
+
+    // Ethereum L1
+    export const ethProvider = ethers.getDefaultProvider("sepolia");
+    ```
+
+  </TabItem>
+
+  <TabItem value="browser-provider" label="BrowserProvider">
+    To interact with [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193) wallets in the browser (like MetaMask), use the [BrowserProvider](https://docs.zksync.io/sdk/js/ethers/v6/providers/browserprovider).
+    
+    For interactions with Lens Chain only, use the SDK's `getDefaultProvider` function. This creates a specialized [JsonRpcProvider](https://docs.ethers.org/v6/api/providers/jsonrpc/#JsonRpcProvider) instance that supports the `lens` and `zks` RPC method namespaces.
+
+    ```ts filename="providers.ts"
+    // convenience type for window.ethereum?: Eip1193Provider
+    import "@lens-chain/sdk/globals";
+
+    import { BrowserProvider, getDefaultProvider, Network } from "@lens-chain/sdk/ethers";
+    import { Eip1193Provider } from "ethers";
+
+    // Lens Chain (L2)
+    export const lensProvider = getDefaultProvider(Network.Testnet);
+
+     // User's network
+    export const browserProvider = new BrowserProvider(window.ethereum as Eip1193Provider);
+    ```
+
+  </TabItem>
+</Tabs>
+
+</Steps>
+
+## Create a Signer
+
+Lens Chain leverages [ZKsync-ethers signers](https://docs.zksync.io/sdk/js/ethers/v6/accounts) to facilitate interaction with an account. Below is a list of available signers:
+
+- The [Wallet](https://docs.zksync.io/sdk/js/ethers/v6/accounts#wallet) class extends [ethers.Wallet](https://docs.ethers.org/v6/api/wallet/#Wallet), incorporating additional ZKsync features.
+- The [EIP712Signer](https://docs.zksync.io/sdk/js/ethers/v6/accounts#eip712signer) class is used to sign EIP712-typed ZKsync transactions.
+- The [Signer](https://docs.zksync.io/sdk/js/ethers/v6/accounts#signer) and [L1Signer](https://docs.zksync.io/sdk/js/ethers/v6/accounts#l1signer) classes are designed for browser integration.
+- The [SmartAccount](https://docs.zksync.io/sdk/js/ethers/v6/accounts#smartaccount) class enhances support for account abstraction. It includes factory classes such as:
+  - [ECDSASmartAccount](https://docs.zksync.io/sdk/js/ethers/v6/accounts#ecdsasmartaccount), which uses a single ECDSA key for signing payloads.
+  - [MultisigECDSASmartAccount](https://docs.zksync.io/sdk/js/ethers/v6/accounts#multisigecdsasmartaccount), which uses multiple ECDSA keys for signing payloads.
+
+Additionally, ZKsync-ether includes `VoidSigner` and `L1VoidSigner` classes. These are ZKsync's implementations of ethers' [VoidSigner](https://docs.ethers.org/v6/api/providers/abstract-signer/#VoidSigner). They allow an address to be used in any API that accepts a [Signer](https://docs.ethers.org/v6/api/providers/#Signer), even when no credentials are available for actual signing.
+
+```ts filename="ZKsync Signers"
+import {
+  Wallet,
+  EIP712Signer,
+  Signer,
+  SmartAccount,
+  ECDSASmartAccount,
+  MultisigECDSASmartAccount,
+} from "zksync-ethers";
+```
+
+For a subset of these, the SDK provides extended versions that include Lens Chain-specific features.
+
+```ts filename="Lens Chain Signers"
+import { Wallet, Signer } from "@lens-chain/sdk/ethers";
+```
+
+### Wallet
+
+Create a `Wallet` instance using the L1 and/or L2 providers depending on which network you want to interact with.
+
+<MultiCodeBlock>
+
+```ts filename="wallet.ts"
+import { Wallet } from "@lens-chain/sdk/ethers";
+
+import { lensProvider, ethProvider } from "./providers";
+
+export const wallet = new Wallet(
+  process.env.PRIVATE_KEY as String,
+  lensProvider,
+  ethProvider
+);
+```
+
+```ts filename="providers.ts"
+import { getDefaultProvider, Network } from "@lens-chain/sdk/ethers";
+import { ethers } from "ethers";
+
+// Lens Chain (L2)
+export const lensProvider = getDefaultProvider(Network.Testnet);
+
+// Ethereum L1
+export const ethProvider = ethers.getDefaultProvider("sepolia");
+```
+
+</MultiCodeBlock>
+
+You can also create an unconnected `Wallet` instance and [connect](https://docs.zksync.io/sdk/js/ethers/v6/accounts#connect) it later:
+
+<MultiCodeBlock>
+
+```ts filename="wallet.ts"
+import { Wallet } from "@lens-chain/sdk/ethers";
+
+import { lensProvider, ethProvider } from "./providers";
+
+const unconnectedWallet = new Wallet(process.env.PRIVATE_KEY as String);
+
+const lensWallet = unconnectedWallet.connect(lensProvider);
+
+const ethWallet = unconnectedWallet.connectToL1(ethProvider);
+```
+
+```ts filename="providers.ts"
+import { getDefaultProvider, Network } from "@lens-chain/sdk/ethers";
+import { ethers } from "ethers";
+
+// Lens Chain (L2)
+export const lensProvider = getDefaultProvider(Network.Testnet);
+
+// Ethereum L1
+export const ethProvider = ethers.getDefaultProvider("sepolia");
+```
+
+</MultiCodeBlock>
+
+### Signer
+
+Create a `Signer` instance that is connected to the `BrowserProvider` instance.
+
+<Alert tone="valid" solid>
+  This class is to be used in a browser environment.
+</Alert>
+
+<MultiCodeBlock>
+
+```ts filename="signer.ts"
+import { Signer } from "@lens-chain/sdk/ethers";
+
+import { browserProvider, lensProvider } from "./providers";
+
+const network = await browserProvider.getNetwork();
+
+const signer = Signer.from(
+  await browserProvider.getSigner(),
+  Number(network.chainId),
+  lensProvider
+);
+```
+
+```ts filename="providers.ts"
+import "@lens-chain/sdk/globals";
+
+import {
+  BrowserProvider,
+  getDefaultProvider,
+  Network,
+} from "@lens-chain/sdk/ethers";
+import { Eip1193Provider } from "ethers";
+
+// Lens Chain (L2)
+export const lensProvider = getDefaultProvider(Network.Testnet);
+
+// User's network
+export const browserProvider = new BrowserProvider(
+  window.ethereum as Eip1193Provider
+);
+```
+
+</MultiCodeBlock>
+
+### L1Signer
+
+Create an `L1Signer` instance to do ZKsync-related operations on L1. To do so you need to connect it to both the `BrowserProvider` and the `LensProvider`.
+
+<Alert tone="valid" solid>
+  This class is to be used in a browser environment.
+</Alert>
+
+<MultiCodeBlock>
+
+```ts filename="l1Signer.ts"
+import { L1Signer } from "zksync-ethers";
+
+import { browserProvider, lensProvider } from "./providers";
+
+export const l1Signer = L1Signer.from(
+  await browserProvider.getSigner(),
+  lensProvider
+);
+```
+
+```ts filename="providers.ts"
+import "@lens-chain/sdk/globals";
+
+import {
+  BrowserProvider,
+  getDefaultProvider,
+  Network,
+} from "@lens-chain/sdk/ethers";
+import { Eip1193Provider } from "ethers";
+
+// Lens Chain (L2)
+export const lensProvider = getDefaultProvider(Network.Testnet);
+
+// User's network
+export const browserProvider = new BrowserProvider(
+  window.ethereum as Eip1193Provider
+);
+```
+
+</MultiCodeBlock>
+
+## Actions
+
+Ethers.js v6 enables interaction with the Lens Chain through various actions, including sending transactions, signing messages, and managing wallet interactions.
+
+### Transactions
+
+To send transactions, you can use the [sendTransaction](https://docs.ethers.org/v6/api/providers/#Signer-sendTransaction) function for gas token transfers ($GRASS) or a [Contract](https://docs.ethers.org/v6/api/contract/) class instance to call contract functions.
+
+**Sending a Transaction:**
+
+```ts
+import { signer } from "./signer";
+
+const tx = await signer.sendTransaction({
+  to: "0xRecipientAddress",
+  value: parseEther("1.0"),
+});
+
+await tx.wait();
+console.log(`Transaction Hash: ${tx.hash}`);
+```
+
+**Executing Contract Function:**
+
+```ts
+import { Contract } from "ethers";
+import { signer } from "./signer";
+import { contractAbi } from "./abi";
+
+const contract = new Contract("0xContractAddress", contractAbi, signer);
+
+const tx = await contract.functionName(arg1, arg2);
+await tx.wait();
+console.log(`Transaction Hash: ${tx.hash}`);
+```
+
+### Signatures
+
+To sign messages for cryptographic authentication, the [signMessage](https://docs.ethers.org/v6/api/providers/#Signer-signMessage) or [signTypedData](https://docs.ethers.org/v6/api/providers/#Signer-signTypedData) functions can be used.
+
+**Sign Message**
+
+```ts
+import { signer } from "./signer";
+
+const message = "Hello, Lens Chain!";
+const signature = await signer.signMessage(message);
+
+console.log(`Signature: ${signature}`);
+```
+
+**Sign Typed Data:**
+
+```ts
+import { signer } from "./signer";
+
+const domain = {
+  name: "Lens Testnet",
+  version: "1",
+  chainId: 37111,
+  verifyingContract: "0xYourContractAddress",
+};
+
+const types = {
+  Permit: [
+    { name: "owner", type: "address" },
+    { name: "spender", type: "address" },
+    { name: "value", type: "uint256" },
+    { name: "nonce", type: "uint256" },
+    { name: "deadline", type: "uint256" },
+  ],
+};
+
+const message = {
+  owner: "0xYourWalletAddress",
+  spender: "0xSpenderAddress",
+  value: BigInt(1000000000000000000),
+  nonce: BigInt(0),
+  deadline: BigInt(Math.floor(Date.now() / 1000) + 3600),
+};
+
+const signature = await signer.signTypedData(domain, types, message);
+console.log(`Signature: ${signature}`);
+```
+
+---
+
+## Additional Options
+
+### Custom RPC Node
+
+If you want to use a Lens Chain RPC node other than the default one, you can create a custom provider like this:
+
+```ts filename="providers.ts"
+import { Provider } from "@lens-chain/sdk/ethers";
+
+// Lens Chain (L2)
+export const lensProvider = new Provider("https://custom-rpc-node.com");
+```
+
+================
+File: src/pages/chain/integrations/viem.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Viem SDK
+
+Interact with the Lens Chain using [Viem](https://viem.sh). A template web app can be found [here](https://github.com/lens-protocol/network-examples).
+
+---
+
+The Lens Chain SDK offers first-class support for [Viem](https://viem.sh), a popular TypeScript Interface for Ethereum. Specifically, it adopts Viem paradigms and provides stateless, low-level primitives for interacting with Lens Chain.
+
+<Alert tone="warning">
+  This section presumes that you are familiar with the [client-action
+  architecture](https://viem.sh/docs/clients/intro#clients) of Viem.
+</Alert>
+
+## Getting Started
+
+<Steps>
+
+### Install Viem
+
+First, install [Viem](https://viem.sh/docs/installation) package:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm install viem@2
+```
+
+```bash filename="yarn"
+yarn add viem@2
+```
+
+```bash filename="pnpm"
+pnpm add viem@2
+```
+
+</MultiCodeBlock>
+
+### Install SDK
+
+Then, install the `@lens-chain/sdk` package:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm install @lens-chain/sdk@latest
+```
+
+```bash filename="yarn"
+yarn add @lens-chain/sdk@latest
+```
+
+```bash filename="pnpm"
+pnpm add @lens-chain/sdk@latest
+```
+
+</MultiCodeBlock>
+
+### Create a Client
+
+Next, configure your [Client](https://viem.sh/docs/clients/intro) by selecting the desired [Transport](https://viem.sh/docs/clients/intro) and a [Lens Chain Chain](#viem-chains).
+
+<MultiCodeBlock>
+
+```ts filename="publicClient.ts"
+import { createPublicClient, http } from "viem";
+import { chains } from "@lens-chain/sdk/viem";
+
+export const publicClient = createPublicClient({
+  chain: chains.mainnet,
+  transport: http(),
+});
+```
+
+```ts filename="walletClient.ts (EIP-1193)"
+import "viem/window";
+
+import { Address, createWalletClient, custom } from "viem";
+import { chains } from "@lens-chain/sdk/viem";
+
+// For more information on hoisting accounts,
+// visit: https://viem.sh/docs/accounts/local.html#optional-hoist-the-account
+const [account] = (await window.ethereum!.request({
+  method: "eth_requestAccounts",
+})) as [Address];
+
+export const walletClient = createWalletClient({
+  account,
+  chain: chains.mainnet,
+  transport: custom(window.ethereum!),
+});
+```
+
+```ts filename="walletClient.ts (Private Key)"
+import { createWalletClient, Hex, http, privateKeyToAccount } from "viem";
+import { chains } from "@lens-chain/sdk/viem";
+
+const account = privateKeyToAccount(process.env.PRIVATE_KEY as Hex);
+
+export const walletClient = createWalletClient({
+  account,
+  chain: chains.mainnet,
+  transport: http(),
+});
+```
+
+</MultiCodeBlock>
+
+</Steps>
+
+## Actions
+
+Viem enables interaction with the Lens Chain through various actions, including sending transactions, signing messages, reading contract data, managing wallet networks, and custom Lens Chain / ZKsync actions.
+
+### Transactions
+
+To send transactions, you can use the [sendTransaction](https://viem.sh/docs/actions/wallet/sendTransaction.html) or [writeContract](https://viem.sh/docs/contract/writeContract.html) functions from Viem. The `sendTransaction` function is suitable for simple gas token transfers ($GRASS), while `writeContract` is used for executing contract functions that modify the blockchain state.
+
+**Sending a Transaction:**
+
+```ts
+import { walletClient } from "./walletClient";
+
+const hash = await walletClient.sendTransaction({
+  to: "0xRecipientAddress",
+  value: 1000000000000000000n, // Amount in wei
+});
+```
+
+**Executing a Contract Function:**
+
+```ts
+import { walletClient } from "./walletClient";
+import { contractAbi } from "./abi";
+
+const hash = await walletClient.writeContract({
+  address: "0xContractAddress",
+  abi: contractAbi,
+  functionName: "functionName",
+  args: [arg1, arg2],
+});
+```
+
+### Signatures
+
+To sign messages for cryptographic authentication, the [signMessage](https://viem.sh/docs/actions/wallet/signMessage.html) or [signTypedData](https://viem.sh/docs/actions/wallet/signTypedData.html) functions can be used.
+
+**Sign Message:**
+
+```ts
+import { walletClient } from "./walletClient";
+
+const signature = await walletClient.signMessage({
+  message: "Hello, Lens Chain!",
+});
+```
+
+**Sign Typed Data:**
+
+```ts
+import { walletClient } from "./walletClient";
+
+const signature = await walletClient.signTypedData({
+  account: "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+  domain: {
+    name: "Ether Mail",
+    version: "1",
+    chainId: 1,
+    verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
+  },
+  types: {
+    Person: [
+      { name: "name", type: "string" },
+      { name: "wallet", type: "address" },
+    ],
+    Mail: [
+      { name: "from", type: "Person" },
+      { name: "to", type: "Person" },
+      { name: "contents", type: "string" },
+    ],
+  },
+  primaryType: "Mail",
+  message: {
+    from: {
+      name: "Cow",
+      wallet: "0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826",
+    },
+    to: {
+      name: "Bob",
+      wallet: "0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB",
+    },
+    contents: "Hello, Bob!",
+  },
+});
+```
+
+### Contract Read
+
+To call a smart contract view function, use the [readContract](https://viem.sh/docs/contract/readContract.html) function. The [multicall](https://viem.sh/docs/contract/multicall.html) function allows batching view function calls into a single request.
+
+**Read Contract Function:**
+
+```ts
+import { publicClient } from "./publicClient";
+import { contractAbi } from "./abi";
+
+const data = await publicClient.readContract({
+  address: "0xContractAddress",
+  abi: contractAbi,
+  functionName: "functionName",
+  args: [arg1],
+});
+```
+
+**Multicall:**
+
+```ts
+import { publicClient } from "./publicClient";
+import { contractAbi } from "./abi";
+
+const results = await publicClient.multicall({
+  contracts: [
+    {
+      address: "0xContractAddress1",
+      abi: contractAbi,
+      functionName: "functionName1",
+      args: [arg1],
+    },
+    {
+      address: "0xContractAddress2",
+      abi: contractAbi,
+      functionName: "functionName2",
+      args: [arg2],
+    },
+  ],
+});
+```
+
+### Wallet Network
+
+To manage the connected wallet network, the [addChain](https://viem.sh/docs/actions/wallet/addChain.html) or [switchChain](https://viem.sh/docs/actions/wallet/switchChain.html) functions can be used.
+
+**Switch Chain to Lens Chain:**
+
+```ts
+import { chains } from "@lens-chain/sdk/viem";
+import { walletClient } from "./walletClient";
+
+await walletClient.switchChain({ id: chains.mainnet.id });
+```
+
+**Add Lens Chain to Wallet:**
+
+```ts
+import { chains } from "@lens-chain/sdk/viem";
+import { walletClient } from "./walletClient";
+
+await walletClient.addChain({ chain: chains.mainnet });
+```
+
+### Lens Chain Actions
+
+<Tabs>
+
+    <TabItem value="lens-wallet-actions" label="Lens Wallet Actions" default>
+
+      ```ts filename="Example"
+      import { sendRawTransactionWithDetailedOutput } from "@lens-chain/sdk/viem";
+
+      import { walletClient } from "./walletClient";
+
+      const result = await sendRawTransactionWithDetailedOutput(walletClient, {
+        serializedTransaction: "0x02f8500182031180…",
+      });
+      ```
+
+    </TabItem>
+
+    <TabItem value="eip-712" label="EIP-712 Actions">
+
+      <MultiCodeBlock>
+
+      ```ts filename="Example"
+      import { deployContract } from "viem/zksync";
+
+      import { abi } from "./abi";
+      import { walletClient } from "./walletClient";
+
+      const hash = await deployContract(walletClient, {
+        abi,
+        bytecode: "0x608060405260405161083e38038061083e833…",
+      });
+      ```
+
+      ```ts filename="abi.ts"
+      export const abi = [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        // …
+      ] as const;
+      ```
+
+      </MultiCodeBlock>
+
+    </TabItem>
+
+    <TabItem value="l2-public" label="L2 Public Actions">
+
+      ```ts filename="Example"
+      import { getL1ChainId } from "viem/zksync";
+
+      import { publicClient } from "./publicClient";
+
+      const chainId = await getL1ChainId(publicClient);
+      ```
+
+    </TabItem>
+
+    <TabItem value="l1-public" label="L1 Public Actions">
+
+    ```ts filename="Example"
+    import { getL1Balance } from "viem/zksync";
+
+      import { publicClient } from "./publicClient";
+
+      const balance = await getL1Balance(publicClient, {
+        account: "0x5C221E77624690fff6dd741493D735a17716c26B",
+      });
+      ```
+
+    </TabItem>
+
+</Tabs>
+
+### ZKsync Actions
+
+- [ZKsync EIP-712 Actions](https://viem.sh/zksync/client#eip712walletactions) for enhanced transaction signing.
+- [ZKsync L2 Public Actions](https://viem.sh/zksync/actions/estimateFee) for Layer 2 operations.
+- [ZKsync L1 Public Actions](https://viem.sh/zksync/client#publicactionsl1) for Layer 1 interactions.
+
+## Custom RPC Node
+
+If you want to use a Lens Chain RPC node other than the default one, you can specify the custom RPC node URL in the `http` transport.
+
+<MultiCodeBlock>
+
+```ts filename="publicClient.ts"
+import { createPublicClient, http } from "viem";
+import { chains } from "@lens-chain/sdk/viem";
+
+export const publicClient = createPublicClient({
+  chain: chains.mainnet,
+  transport: http("https://custom-rpc-node.com"),
+});
+```
+
+```ts filename="walletClient.ts (Private Key)"
+import { createWalletClient, Hex, http, privateKeyToAccount } from "viem";
+import { chains } from "@lens-chain/sdk/viem";
+
+const account = privateKeyToAccount(process.env.PRIVATE_KEY as Hex);
+
+export const walletClient = createWalletClient({
+  account,
+  chain: chains.mainnet,
+  transport: http("https://custom-rpc-node.com"),
+});
+```
+
+</MultiCodeBlock>
+
+================
+File: src/pages/chain/integrations/web3py.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Web3.py
+
+Interact with Lens Chain using [web.py](https://web3py.readthedocs.io/en/stable/). A template Jupyter Notebook can be found [here](https://github.com/lens-protocol/network-examples).
+
+================
+File: src/pages/chain/resources/changelog.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: false,
+  showNext: false,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Changelog
+
+All notable changes to this project will be documented in this page.
+
+---
+
+<Alert tone="warning" solid>
+  This page collects any major change to Lens Chain toolsets. While we will try
+  to keep breaking changes to a minimum, we may need to introduce them as we
+  iterate on the implementations.
+</Alert>
+
+<Changelog date="2025-04-01">
+
+## Prepare for Mainnet
+
+The [Lens Chains SDK package](https://github.com/lens-protocol/metadata) has reached a **stable 1.0 release** — no functional changes, just a transition to a stable version.
+
+Update to:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm install @lens-chain/sdk@latest
+```
+
+```bash filename="yarn"
+yarn add @lens-chain/sdk@latest
+```
+
+```bash filename="pnpm"
+pnpm add @lens-chain/sdk@latest
+```
+
+</MultiCodeBlock>
+
+</Changelog>
+
+<Changelog date="2025-03-03">
+
+## Relocate Lens Chain SDK
+
+The Lens Chain SDK has been relocated under the `@lens-chain` NPM organization: `@lens-chain/sdk`.
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm uninstall @lens-network/sdk
+npm install @lens-chain/sdk@canary
+```
+
+```bash filename="yarn"
+yarn remove @lens-network/sdk
+yarn add @lens-chain/sdk@canary
+```
+
+```bash filename="pnpm"
+pnpm remove @lens-network/sdk
+pnpm add @lens-chain/sdk@canary
+```
+
+</MultiCodeBlock>
+
+Amend your import statements to reflect the new package name:
+
+```diff
+- import { chains } from '@lens-network/sdk';
++ import { chains } from '@lens-chain/sdk';
+```
+
+</Changelog>
+
+<Changelog date="2024-11-12">
+
+## Developer Preview Announcement
+
+</Changelog>
+
+================
+File: src/pages/chain/resources/developer-portal.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Developer Portal
+
+---
+
+Coming soon.
+
+================
+File: src/pages/chain/resources/differences-from-ethereum.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+## Differences from Ethereum
+
+Understand key technical distinctions between Lens Chain and the Ethereum mainnet.
+
+---
+
+Lens Chain is a Layer 2 blockchain network built on [ZKsync](https://zksync.io/) technology. As a result, Lens Chain is EVM-compatible, meaning it shares ZKsync's differences from Ethereum and other EVM-equivalent blockchains.
+
+The primary differences are outlined below:
+
+- [EVM Instructions](https://docs.zksync.io/build/developer-reference/ethereum-differences/evm-instructions)
+- [Nonces Management](https://docs.zksync.io/build/developer-reference/ethereum-differences/nonces)
+- [Libraries Linking](https://docs.zksync.io/build/developer-reference/ethereum-differences/libraries)
+- [Precompiles](https://docs.zksync.io/build/developer-reference/ethereum-differences/pre-compiles)
+- [Account Abstraction](https://docs.zksync.io/build/developer-reference/ethereum-differences/native-vs-eip4337)
+- [Contract Deployment](https://docs.zksync.io/build/developer-reference/ethereum-differences/contract-deployment)
+
+================
+File: src/pages/chain/resources/network-information.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Network Information
+
+Quick reference for developers looking to build on Lens Chain.
+
+---
+
+## Mainnet
+
+| Name                                            | Value                       |
+| ----------------------------------------------- | --------------------------- |
+| Network Name                                    | `Lens Chain Mainnet`        |
+| Chain ID                                        | `232`                       |
+| RPC URL                                         | `https://rpc.lens.xyz`      |
+| WebSocket URL                                   | `wss://rpc.lens.xyz/ws`     |
+| Currency Symbol                                 | `GHO`                       |
+| [Block Explorer URL](https://explorer.lens.xyz) | `https://explorer.lens.xyz` |
+
+## Testnet
+
+| Name                                                    | Value                               |
+| ------------------------------------------------------- | ----------------------------------- |
+| Network Name                                            | `Lens Chain Testnet`                |
+| Chain ID                                                | `37111`                             |
+| RPC URL                                                 | `https://rpc.testnet.lens.xyz`      |
+| WebSocket URL                                           | `wss://rpc.testnet.lens.xyz/ws`     |
+| Currency Symbol                                         | `GRASS`                             |
+| [Block Explorer URL](https://explorer.testnet.lens.xyz) | `https://explorer.testnet.lens.xyz` |
+
+================
+File: src/pages/chain/smart-contracts/foundry.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Foundry
+
+Learn how to develop smart contracts on Lens Chain using [Foundry](https://github.com/foundry-rs/foundry).
+
+---
+
+This guide is focused on migrating an existing Solidity Foundry project to Lens Chain.
+
+## Limitations
+
+Before deciding to use Foundry for development on Lens Chain, it's important to note that Foundry's ZKsync support comes from an [open-source Foundry fork](https://github.com/matter-labs/foundry-zksync) currently in **alpha** stage.
+
+Be mindful of the following limitations, among others:
+
+- **Compile Time**: Compilation may be slower for some users.
+- **Specific Foundry Features**: Features like `--gas-report` or `--verify` might not function as expected. Efforts are underway to fully support these features.
+- **Compiling Libraries**: Non-inlinable libraries require deployment and configuration adjustments.
+
+## Configuration
+
+Follow the steps below to configure Foundry for development on Lens Chain.
+
+<Steps>
+
+#### Install Foundry ZKsync
+
+Clone the Foundry ZKsync repository:
+
+```bash
+git clone git@github.com:matter-labs/foundry-zksync.git
+```
+
+Install Foundry ZKsync:
+
+```bash
+cd foundry-zksync
+./install-foundry-zksync
+```
+
+Upon successful installation, you will receive a confirmation message similar to the following:
+
+```bash
+foundryup-zksync: installed - forge 0.0.2 (6e1c282 2024-07-03T00:22:11.972797000Z)
+foundryup-zksync: installed - cast 0.0.2 (6e1c282 2024-07-03T00:22:22.891893000Z)
+foundryup-zksync: done!
+Verifying installation...
+Forge version 0.0.2 is successfully installed.
+```
+
+After installation, the `forge` and `cast` commands will switch to using the Foundry ZKsync fork.
+
+To revert to the original Foundry version, use the `foundryup` command. To switch back to the Foundry ZKsync fork, run `foundryup-zksync`.
+
+You can verify the active Foundry version at any time by comparing the version hash with those provided in the confirmation message.
+
+<MultiCodeBlock>
+
+```bash filename="forge -V"
+$ forge -V
+0.0.2 (6e1c282 2024-07-03T00:22:11.972797000Z)
+```
+
+```bash filename="cast -V"
+$ cast -V
+0.0.2 (6e1c282 2024-07-03T00:22:22.891893000Z)
+```
+
+</MultiCodeBlock>
+
+#### Project Configuration
+
+Add a dedicated profile to your `foundry.toml` file for Lens Chain:
+
+```toml filename="foundry.toml"
+[profile.default]
+src = 'src'
+out = 'out'
+libs = ['lib']
+# other options your default profile might have
+
+[profile.zksync]
+src = 'src'
+libs = ['lib']
+solc-version = "0.8.24"
+fallback_oz = true
+is_system = false
+mode = "3"
+```
+
+#### GitIgnore Configuration
+
+Add the following to your `.gitignore` file:
+
+```text filename=".gitignore"
+# ZKsync files
+zkout/
+```
+
+#### Setup Deployment Wallet
+
+To deploy contracts on Lens Chain Sepolia Testnet, you'll need $GRASS tokens from the [faucets](../tools/faucets).
+
+Then, create a [Foundry keystore](https://book.getfoundry.sh/reference/cast/cast-wallet-import):
+
+```bash
+FOUNDRY_PROFILE=zksync cast wallet import myKeystore --interactive
+```
+
+You will be prompted to enter your Private Key and a password. Upon successful import, you will receive a confirmation message similar to the following:
+
+```bash
+`myKeystore` keystore was saved successfully. Address: 0x1234567890abcdef1234567890abcdef12345678
+```
+
+<Alert tone="info" solid>
+  `myKeystore` is the name of the keystore you created. You can replace it with
+  a name of your choice.
+</Alert>
+
+</Steps>
+
+## Usage
+
+### Compile Contracts
+
+To compile your contracts for Lens Chain, use the following command:
+
+```bash
+FOUNDRY_PROFILE=zksync forge build --zksync
+```
+
+Upon successful compilation, you will receive a confirmation message similar to the following:
+
+```bash
+[⠃] Compiling (zksync)...
+Compiler run successful with warnings:
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Warning: Your code or one of its dependencies uses the 'extcodesize' instruction, which is       │
+│ usually needed in the following cases:                                                           │
+│   1. To detect whether an address belongs to a smart contract.                                   │
+│   2. To detect whether the deploy code execution has finished.                                   │
+│ ZKsync Era comes with native account abstraction support (so accounts are smart contracts,       │
+│ including private-key controlled EOAs), and you should avoid differentiating between contracts   │
+│ and non-contract addresses.                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+--> lib/forge-std/src/StdCheats.sol
+
+...
+```
+
+Address any warnings as necessary. For more information, consult the [ZKsync Best Practices](https://docs.zksync.io/build/developer-reference/best-practices).
+
+### Deploy Contracts
+
+Use the `forge create --zksync` command to deploy your contracts to Lens Chain.
+
+```bash filename="forge create --zksync"
+FOUNDRY_PROFILE=zksync forge create <CONTRACT> [OPTIONS] 
+  --rpc-url <RPC-URL> 
+  --chain <CHAIN-ID> 
+  --account <KEYSTORE_NAME> 
+  --from <KEYSTORE_ADDRESS> 
+  --zksync
+```
+
+For example:
+
+```bash filename="Lens Chain Sepolia Testnet"
+FOUNDRY_PROFILE=zksync forge create src/Lock.sol:Lock 
+  --constructor-args "42" 
+  --account myKeystore 
+  --from <KEYSTORE_ADDRESS> 
+  --rpc-url https://rpc.testnet.lens.xyz 
+  --chain 37111 
+  --zksync
+```
+
+After entering your keystore password twice, a successful deployment will generate a confirmation message as shown below:
+
+```bash filename="Deployment Confirmation"
+[⠊] Compiling (zksync)...
+Enter keystore password:
+Enter keystore password:
+Deployer: 0x00A58BA275E6BFC004E2bf9be121a15a2c543e71
+Deployed to: 0x5CbF18d3379a7FE3cFFcA34801EDc700eAe49a92
+Transaction hash: 0xd3eda207aa6930b3e6b271ff77997921570c41e525689ce1b62c50013b6226fb
+```
+
+That's it—you have successfully deployed your contract to Lens Chain.
+
+### Running Tests
+
+Use the `forge test --zksync` command to run tests.
+
+```bash filename="forge test --zksync"
+FOUNDRY_PROFILE=zksync forge test --zksync
+```
+
+#### Testing With Hardhat
+
+This section will walkthrough how integrate Foundry testing into an existing Hardhat project. A template repository can be found [here](https://github.com/lens-protocol/hardhat-foundry-template).
+
+1. Install the Foundry plugin with your package manager of choice:
+
+```bash
+npm install --save-dev @nomicfoundation/hardhat-foundry
+```
+
+2. Import the plugin in your Hardhat config (`hardhat.config.ts`):
+
+```ts
+import "@nomicfoundation/hardhat-foundry";
+```
+
+3. Initialize Foundry project
+
+```bash
+npx hardhat init-foundry
+```
+
+4. Modify `foundry.toml` to specify the directory where contracts are located, and add configuration for ZKSync. Example cofnfiguration shown below:
+
+```toml
+[profile.default]
+src = 'src'
+out = 'out'
+libs = ['lib']
+
+[profile.zksync]
+src = 'contracts'
+solc-version = "0.8.24"
+fallback_oz = true
+is_system = false
+mode = "3"
+test = 'test'
+script = 'script'
+cache_path  = 'cache_forge'
+libs = ['node_modules', 'lib']
+```
+
+5. Add test files (.t.sol) to the `test` directory specified in `foundry.toml`, see [Foundry testing guide](https://book.getfoundry.sh/forge/tests) for instructions on writing tests.
+
+6. Run tests with Foundry
+
+```bash
+FOUNDRY_PROFILE=zksync forge test --zksync
+```
+
+---
+
+## Troubleshooting
+
+### Library Not Loaded
+
+If you encounter an error similar to the following when running `./install-foundry-zksync`:
+
+```bash
+dyld[10022]: Library not loaded: /opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib
+  Referenced from: <93EBBD45-018B-39DE-8009-A2662BD3CFE4> /Users/brainjammer/.foundry/bin/forge
+  Reason: tried: '/opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib' (no such file), '/opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib' (no such file)
+foundryup-zksync: command failed: /Users/brainjammer/.foundry/bin/forge --version
+foundryup-zksync: installed -
+dyld[10025]: Library not loaded: /opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib
+  Referenced from: <2E658B56-FE34-30BF-A410-8E6D46C6B1C5> /Users/brainjammer/.foundry/bin/cast
+  Reason: tried: '/opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib' (no such file), '/opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib' (no such file)
+foundryup-zksync: command failed: /Users/brainjammer/.foundry/bin/cast --version
+foundryup-zksync: installed -
+foundryup-zksync: done!
+Verifying installation...
+dyld[10027]: Library not loaded: /opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib
+  Referenced from: <93EBBD45-018B-39DE-8009-A2662BD3CFE4> /Users/brainjammer/.foundry/bin/forge
+  Reason: tried: '/opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib' (no such file), '/opt/homebrew/opt/libusb/lib/libusb-1.0.0.dylib' (no such file)
+Installation verification failed. Forge is not properly installed.
+```
+
+You can resolve this issue by installing `libusb`:
+
+```bash
+brew install libusb
+```
+
+================
+File: src/pages/chain/smart-contracts/hardhat.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Hardhat
+
+Learn how to develop smart contracts on Lens Chain using [Hardhat](https://hardhat.org/).
+
+---
+
+<Alert tone="info" solid>
+  This guide is focused on Solidity Hardhat projects developed in TypeScript and
+  utilizing [ethers.js](https://docs.ethers.io/).
+</Alert>
+
+## Migrate an Existing Project
+
+In this section, we'll walk you through the process of migrating an existing Solidity Hardhat project to Lens Chain.
+
+### Compile Contracts
+
+The first step in migrating an existing project to Lens Chain is to compile the contracts using the `zksolc` compiler.
+
+<Steps>
+
+#### Install Dependencies
+
+Start by installing the `@matterlabs/hardhat-zksync` and `zksync-ethers` packages:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm install -D @matterlabs/hardhat-zksync zksync-ethers
+```
+
+```bash filename="yarn"
+yarn add -D @matterlabs/hardhat-zksync zksync-ethers
+```
+
+</MultiCodeBlock>
+
+#### Update hardhat.config.ts
+
+Next, update your `hardhat.config.ts` file as follows:
+
+- Import the `@matterlabs/hardhat-zksync` plugin.
+- Configure the Hardhat Network for ZKsync compatibility.
+- Add the Lens Testnet network configuration.
+- Include the `zksolc` compiler options.
+
+Example configuration:
+
+```ts filename="hardhat.config.ts" highlight="1,9-12,17-24,27"
+import "@matterlabs/hardhat-zksync";
+import "@nomicfoundation/hardhat-toolbox";
+
+import { HardhatUserConfig } from "hardhat/config";
+
+const config: HardhatUserConfig = {
+  solidity: "0.8.24",
+
+  zksolc: {
+    version: "latest",
+    settings: {},
+  },
+
+  networks: {
+    // ...
+
+    lensTestnet: {
+      chainId: 37111,
+      ethNetwork: "sepolia",
+      url: "https://rpc.testnet.lens.xyz",
+      verifyURL:
+        "https://block-explorer-verify.testnet.lens.xyz/contract_verification",
+      zksync: true,
+    },
+
+    lensMainnet: {
+      chainId: 232,
+      ethNetwork: "sepolia",
+      url: "https://rpc.lens.xyz",
+      verifyURL:
+        "https://verify.lens.xyz/contract_verification",
+      zksync: true,
+    },
+
+    hardhat: {
+      zksync: true,
+    },
+  },
+};
+
+export default config;
+```
+
+<Alert tone="info" solid>
+  In case of multiple networks configuration, remember to add `zksync: false` to
+  any other networks.
+</Alert>
+
+#### Compile
+
+Now you can compile the contracts using the `zksolc` compiler:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm hardhat compile
+```
+
+```bash filename="yarn"
+yarn hardhat compile
+```
+
+</MultiCodeBlock>
+
+This command will compile all contracts in the `/contracts` folder and create the folders `artifacts-zk` and `cache-zk`.
+
+<Alert tone="info" solid>
+  Include the `artifacts-zk` and `cache-zk` in your `.gitignore` file alongside
+  the typical Hardhat `artifacts` and `cache` folders.
+</Alert>
+
+</Steps>
+
+Upon successful compilation, you will receive an output similar to the following:
+
+```bash
+Compiling contracts for ZKsync Era with zksolc v1.5.1 and zkvm-solc v0.8.24-1.0.1
+Compiling 15 Solidity files
+Generating typings for: 16 artifacts in dir: typechain-types for target: ethers-v6
+Successfully generated 52 typings!
+Successfully compiled 15 Solidity files
+```
+
+### Deploy Contracts
+
+With the contracts compiled, it's time to deploy them to Lens Chain. A simple contract example will guide us through the deployment process.
+
+```sol filename="contracts/Storage.sol"
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Storage {
+    // This variable will store the number
+    uint256 private storedNumber;
+
+    // This event will be emitted whenever the stored number is updated
+    event NumberStored(uint256 newNumber);
+
+    // Constructor to initialize the stored number
+    constructor(uint256 initialNumber) {
+        storedNumber = initialNumber;
+        emit NumberStored(initialNumber);
+    }
+
+    // Function to store a new number
+    function storeNumber(uint256 newNumber) public {
+        storedNumber = newNumber;
+        emit NumberStored(newNumber);
+    }
+
+    // Function to retrieve the stored number
+    function retrieveNumber() public view returns (uint256) {
+        return storedNumber;
+    }
+}
+```
+
+<Steps>
+
+#### Setup Deployment Wallet
+
+To deploy contracts on Lens Chain Testnet, you'll need $GRASS tokens from the [faucets](../tools/faucets).
+
+In a Hardhat Network development environment, you can bypass this requirement by using [pre-configured rich wallets](https://docs.zksync.io/build/test-and-debug/in-memory-node#pre-configured-rich-wallets).
+
+#### Deploy Script
+
+Contract deployment varies slightly depending on whether you deploy a regular contract or an upgradeable contract.
+
+<Tabs>
+
+<TabItem value="regular-contract" label="Regular Contract" default>
+
+Within the `deploy` folder, create a deployment script using the `Deployer` class from the `@matterlabs/hardhat-zksync` plugin, as illustrated below:
+
+```ts filename="deploy/deploy-storage.ts"
+import { Deployer } from "@matterlabs/hardhat-zksync";
+import { HardhatRuntimeEnvironment } from "hardhat/types";
+import { Wallet } from "zksync-ethers";
+
+export default async function (hre: HardhatRuntimeEnvironment) {
+  // Initialize the wallet.
+  const wallet = new Wallet("<WALLET-PRIVATE-KEY>");
+
+  // Create deployer object and load the artifact of the contract we want to deploy.
+  const deployer = new Deployer(hre, wallet);
+
+  // Load contract
+  const artifact = await deployer.loadArtifact("Storage");
+
+  // `initialNumber` is an argument for contract constructor.
+  const initialNumber = 42;
+  const greeterContract = await deployer.deploy(artifact, [initialNumber]);
+
+  // Show the contract info.
+  console.log(
+    `${
+      artifact.contractName
+    } was deployed to ${await greeterContract.getAddress()}`
+  );
+}
+```
+
+Run the `deploy-zksync` task specifying the script and the network:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm hardhat deploy-zksync --script deploy-storage.ts --network lensTestnet
+```
+
+```bash filename="yarn"
+yarn hardhat deploy-zksync --script deploy-storage.ts --network lensTestnet
+```
+
+</MultiCodeBlock>
+
+Upon successful deployment of the contract you will receive an output similar to the following:
+
+```bash
+Running deploy script
+Storage was deployed to 0xda2BFD327d880A42Ec72E3392E10e43bb32B874F
+```
+
+Keep note of the contract address as it will be required for verification.
+
+</TabItem>
+
+<TabItem value="upgradable-transparent-proxy" label="Upgradable Transparent Proxy">
+
+Adapt the contract for upgradeability using the [Transparent Proxy pattern](https://docs.zksync.io/build/tooling/hardhat/hardhat-zksync-upgradable#transparent-upgradable-proxies).
+
+Begin by installing the necessary OpenZeppelin packages:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm install -D "@openzeppelin/contracts@^4.9.6" "@openzeppelin/contracts-upgradeable@^4.9.6"
+```
+
+```bash filename="yarn"
+yarn add -D "@openzeppelin/contracts@^4.9.6" "@openzeppelin/contracts-upgradeable@^4.9.6"
+```
+
+</MultiCodeBlock>
+
+<Alert tone="warning" solid>
+  A constraint in a [ZKsync
+  dependency](https://docs.zksync.io/build/tooling/hardhat/hardhat-zksync-upgradable#openzeppelin-version)
+  necessitates the use of specific OpenZeppelin contract versions, as previously
+  mentioned.
+</Alert>
+
+Then, initialize state variables using an `initialize` function rather than a constructor, adhering to the [Transparent Proxy pattern](https://docs.zksync.io/build/tooling/hardhat/hardhat-zksync-upgradable#transparent-upgradable-proxies).
+
+```sol filename="contracts/UpgradeableStorage.sol" highlight="4,6,13-17"
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
+
+contract UpgradeableStorage is Initializable {
+    // This variable will store the number
+    uint256 private storedNumber;
+
+    // This event will be emitted whenever the stored number is updated
+    event NumberStored(uint256 newNumber);
+
+    // Remove constructor in favour of initialize method
+    function initialize(uint256 initialNumber) public initializer {
+        storedNumber = initialNumber;
+        emit NumberStored(initialNumber);
+    }
+
+    // Function to store a new number
+    function storeNumber(uint256 newNumber) public {
+        storedNumber = newNumber;
+        emit NumberStored(newNumber);
+    }
+
+    // Function to retrieve the stored number
+    function retrieveNumber() public view returns (uint256) {
+        return storedNumber;
+    }
+}
+```
+
+Within the `deploy` folder, create a deployment script using the `hre.zkUpgrades.deployProxy` method, as illustrated below:
+
+```ts filename="deploy/deploy-upgradeable-storage.ts"
+import { Deployer } from "@matterlabs/hardhat-zksync";
+import { HardhatRuntimeEnvironment } from "hardhat/types";
+import { Provider, Wallet } from "zksync-ethers";
+
+// Import ZKsync Node type extensions
+import "@matterlabs/hardhat-zksync-node/dist/type-extensions";
+
+// An example of a deploy script that will deploy and call a simple contract.
+export default async function (hre: HardhatRuntimeEnvironment) {
+  // Initialize ZKsync Provider
+  const provider = new Provider(hre.network.config.url);
+
+  // Initialize the wallet.
+  const wallet = new Wallet("<WALLET-PRIVATE-KEY>", provider);
+
+  // Create deployer object and load the artifact of the contract we want to deploy.
+  const deployer = new Deployer(hre, wallet);
+
+  // Load contract
+  const artifact = await deployer.loadArtifact("UpgradeableStorage");
+
+  const initialNumber = 42;
+  // Deploy the contract using a transparent proxy
+  const contract = await hre.zkUpgrades.deployProxy(
+    wallet,
+    artifact,
+    [initialNumber],
+    { initializer: "initialize" }
+  );
+
+  await contract.waitForDeployment();
+}
+```
+
+Re-compile and run the `deploy-zksync` task specifying the script and the network:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+npm hardhat compile
+npm hardhat deploy-zksync --script deploy-upgradeable-storage.ts --network lensTestnet
+```
+
+```bash filename="yarn"
+yarn hardhat compile
+yarn hardhat deploy-zksync --script deploy-upgradeable-storage.ts --network lensTestnet
+```
+
+</MultiCodeBlock>
+
+Upon successful deployment of the contract you will receive an output similar to the following:
+
+```bash highlight="3"
+Implementation contract was deployed to 0x6A4439110728FEe3778B71b5B99229E2beee7664
+Admin was deployed to 0x0D859C0987d2374Bc1E41e6eF51e56517C2Fa2dE
+Transparent proxy was deployed to 0x948bD48B3b90fa8523d2cBB7980dc52dE4448318
+```
+
+Keep note of the proxy address as it will be required for verification.
+
+</TabItem>
+
+</Tabs>
+
+#### Verify Contracts
+
+Once the contract is deployed, you can verify it on Lens Chain with the `hardhat verify` command. Note that the verification process differs slightly between regular and upgradeable contracts.
+
+<Tabs>
+
+<TabItem value="regular-contract" label="Regular Contract" default>
+
+Verify the contract specifying the contract address and any constructor arguments:
+
+<MultiCodeBlock>
+  
+```bash filename="npm"
+# npm hardhat verify <CONTRACT-ADDRESS> [<constructor-args>] --network lensTestnet
+npm hardhat verify 0xda2BFD327d880A42Ec72E3392E10e43bb32B874F "42" --network lensTestnet
+```
+
+```bash filename="yarn"
+# yarn hardhat verify <CONTRACT-ADDRESS> [<constructor-args>] --network lensTestnet
+yarn hardhat verify 0xda2BFD327d880A42Ec72E3392E10e43bb32B874F "42" --network lensTestnet
+```
+
+</MultiCodeBlock>
+
+Upon successful verification, you will receive an output similar to the following:
+
+```bash
+lensTestnet Your verification ID is: 70 Contract successfully verified on
+ZKsync block explorer!
+```
+
+That's it—you've successfully deployed and verified a contract on Lens Chain.
+
+</TabItem>
+
+<TabItem value="upgradable-transparent-proxy" label="Upgradable Transparent Proxy">
+
+Verify the contract specifying the proxy address:
+
+<MultiCodeBlock>
+
+```bash filename="npm"
+# npm hardhat verify <PROXY-ADDRESS> --network lensTestnet
+npm hardhat verify 0x948bD48B3b90fa8523d2cBB7980dc52dE4448318 --network lensTestnet
+```
+
+```bash filename="yarn"
+# yarn hardhat verify <PROXY-ADDRESS> --network lensTestnet
+yarn hardhat verify 0x948bD48B3b90fa8523d2cBB7980dc52dE4448318 --network lensTestnet
+```
+
+</MultiCodeBlock>
+
+Upon successful verification, you will receive an output similar to the following:
+
+```bash
+Verifying implementation: 0x6A4439110728FEe3778B71b5B99229E2beee7664
+Your verification ID is: 67
+Contract successfully verified on ZKsync block explorer!
+Verifying proxy: 0x948bD48B3b90fa8523d2cBB7980dc52dE4448318
+Your verification ID is: 68
+Contract successfully verified on ZKsync block explorer!
+Verifying proxy admin: 0x0D859C0987d2374Bc1E41e6eF51e56517C2Fa2dE
+Your verification ID is: 69
+Contract successfully verified on ZKsync block explorer!
+```
+
+That's it—you've successfully deployed and verified an upgradeable contract on Lens Chain.
+
+</TabItem>
+
+</Tabs>
+
+</Steps>
+
+---
+
+## Create a New Project
+
+For those beginning a new project, the [Hardhat boilerplate](https://github.com/lens-protocol/lens-network-hardhat-boilerplate) tailored for Lens Chain is highly recommended. It offers a foundational setup for efficiently deploying and testing smart contracts on Lens Chain.
+
+Included in the boilerplate are:
+
+- `/contracts`: A sample smart contract.
+- `/deploy`: Scripts for deploying contracts.
+- `/test`: Examples of tests for your contracts.
+- `hardhat.config.ts`: A Hardhat configuration file customized for Lens Chain.
+
+### Getting Started
+
+Make sure you have the Node.js **>= v20**.
+
+<Alert tone="info" solid>
+  If you use [nvm](https://github.com/nvm-sh/nvm) to manage your Node.js
+  versions, you can run `nvm use` from within the project directory to switch to
+  the correct Node.js version.
+</Alert>
+
+Enable [Corepack](https://www.totaltypescript.com/how-to-use-corepack), if it isn't already; this will allow you to use the correct [Yarn](https://yarnpkg.com/) version:
+
+```bash
+corepack enable
+```
+
+Then, follow these steps to get started:
+
+<Steps>
+
+#### Clone the Repository
+
+Clone the boilerplate repository into a new project directory:
+
+```bash
+git clone https://github.com/lens-protocol/lens-network-hardhat-boilerplate.git my-project
+cd my-project
+```
+
+#### Install Dependencies
+
+Install the project dependencies:
+
+```bash
+yarn install
+```
+
+#### Setup Environment
+
+Create `.env` file from the `.env.example` template:
+
+```bash
+cp .env.example .env
+```
+
+and populate the `PRIVATE_KEY` environment variable:
+
+```text filename=".env"
+PRIVATE_KEY=0x…
+```
+
+with the private key of an account with Lens Chain tokens.
+
+<Alert tone="valid" solid>
+  Use [network facuets](../tools/faucets) to obtain tokens for testing.
+</Alert>
+
+</Steps>
+
+### Usage
+
+The project includes several yarn scripts designed to streamline your workflow:
+
+- `yarn compile`: Compiles the contracts.
+- `yarn deploy --script <your-deploy-script.ts> --network lensTestnet`: Deploys and verifies contracts.
+- `yarn test`: Executes tests against local ZKsync node.
+- `yarn clean`: Removes build artifacts from the project.
+- `yarn lint`: Lints the Solidity code.
+
+For detailed instructions on how to utilize these scripts, refer to the project's `README.md` file.
+
+### Utils
+
+The `deploy/utils.ts` file contains helper functions for deploying contracts. You can use these functions to streamline the deployment process.
+
+#### deployContract(contractName, constructorArgs, options)
+
+To deploy regular contracts, you can use the `deployContract` helper as demonstrated below:
+
+```ts filename="deploy/deploy-contract.ts"
+import { HardhatRuntimeEnvironment } from "hardhat/types";
+
+import { deployTransparentProxy, getWallet } from "./utils";
+
+export default async function (hre: HardhatRuntimeEnvironment) {
+  const wallet = getWallet();
+
+  await deployTransparentProxy(
+    "<CONTRACT_NAME>",
+    [
+      /* Constructor arguments */
+    ],
+    {
+      hre,
+      wallet,
+      verify: true,
+    }
+  );
+}
+```
+
+#### deployTransparentProxy(contractName, initializationArgs, options)
+
+To deploy upgradeable contracts, you can use the `deployTransparentProxy` helper as demonstrated below:
+
+```ts filename="deploy/deploy-my-upgradeable-contract.ts"
+import { HardhatRuntimeEnvironment } from "hardhat/types";
+
+import { deployTransparentProxy, getWallet } from "./utils";
+
+export default async function (hre: HardhatRuntimeEnvironment) {
+  const wallet = getWallet();
+
+  await deployTransparentProxy(
+    "<CONTRACT_NAME>",
+    [
+      /** Initialization arguments */
+    ],
+    {
+      hre,
+      wallet,
+      verify: true,
+    }
+  );
+}
+```
+
+---
+
+## Testing
+
+In this section, we'll walk through developing a test in Hardhat using the `Storage.sol` contract above.
+
+To start, create a new file `Storage.test.ts` within the `test` directory.
+
+```ts
+import { expect } from "chai";
+import { ethers } from "hardhat";
+
+describe("Storage", () => {
+  it("stores and retrieves a number", async () => {
+    const Storage = await ethers.getContractFactory("Storage");
+    const storage = await Storage.deploy(42);
+    await storage.deployed();
+    expect(await storage.retrieveNumber()).to.equal(42);
+  });
+});
+```
+
+To run this test, execute:
+
+```bash
+yarn test
+```
+
+This test confirms that the `storeNumber` and `retrieveNumber` functions work as intended. For more information on testing techniques and best practices, refer to the [Hardhat Testing Guide](https://hardhat.org/hardhat-runner/docs/guides/test-contracts).
+
+Foundry can be added to Hardhat project as a faster alternative for running tests. For more details, see [Testing with Hardhat in Foundry](./foundry#testing-with-hardhat).
+
+---
+
+## Troubleshooting
+
+### Failed Deployment
+
+<Alert tone="valid" solid>
+  This issue should not impact projects created using the [Hardhat
+  boilerplate](#create-a-new-project).
+</Alert>
+
+If gas estimation for the deployment of an upgradeable contract fails immediately after deploying the implementation and admin contracts, like so:
+
+```bash
+Implementation contract was deployed to 0xCCa917109e1fCF7c41f32912b09e9Ee67b1B64D5
+Admin was deployed to 0x0D859C0987d2374Bc1E41e6eF51e56517C2Fa2dE
+An unexpected error occurred:
+
+Error: missing revert data (action="estimateGas", data=null, reason=null, transaction={ "data": "0x9c4d535b000000000000000000…"
+```
+
+This issue often arises from using an incompatible version of OpenZeppelin contracts. To resolve this issue, ensure you are using the correct versions:
+
+```json filename="package.json"
+"@openzeppelin/contracts": "^4.9.6",
+"@openzeppelin/contracts-upgradeable": "^4.9.6",
+```
+
+For further details, refer to the [ZKsync documentation](https://docs.zksync.io/build/tooling/hardhat/hardhat-zksync-upgradable#openzeppelin-version).
+
+### Intermittend Test Failures
+
+<Alert tone="valid" solid>
+  This issue should not impact projects created using the [Hardhat
+  boilerplate](#create-a-new-project).
+</Alert>
+
+If you experience intermittent test failures when running against the Hardhat network, such as:
+
+```bash
+Error: No contract at address 0x111C3E89Ce80e62EE88318C2804920D4c96f92bb (Removed from manifest)
+  at validateStoredDeployment (node_modules/@openzeppelin/upgrades-core/src/deployment.ts:153:13)
+  at processTicksAndRejections (node:internal/process/task_queues:95:5)
+  at async validateCached (node_modules/@openzeppelin/upgrades-core/src/deployment.ts:95:14)
+  at async resumeOrDeploy (node_modules/@openzeppelin/upgrades-core/src/deployment.ts:74:21)
+  at async /path/to/your/project/repo/node_modules/@matterlabs/hardhat-zksync-upgradable/src/core/impl-store.ts:49:29
+  at async Manifest.lockedRun (node_modules/@matterlabs/hardhat-zksync-upgradable/src/core/manifest.ts:150:20)
+  at async fetchOrDeployGeneric (node_modules/@matterlabs/hardhat-zksync-upgradable/src/core/impl-store.ts:39:28)
+  at async deployImpl (node_modules/@matterlabs/hardhat-zksync-upgradable/src/proxy-deployment/deploy-impl.ts:74:24)
+  at async deployProxyImpl (node_modules/@matterlabs/hardhat-zksync-upgradable/src/proxy-deployment/deploy-impl.ts:63:12)
+  at async Proxy.deployProxy (node_modules/@matterlabs/hardhat-zksync-upgradable/src/proxy-deployment/deploy-proxy.ts:50:32)
+```
+
+This issue is related to a file generated by the `@matterlabs/hardhat-zksync-upgradable` plugin, part of the `@matterlabs/hardhat-zksync` package. A workaround involves deleting the file
+
+```bash
+./.upgradable/ZKsync-era-test-node.json
+```
+
+before running tests.
+
+To streamline this process, incorporate the following scripts into your `package.json`:
+
+```json filename="package.json"
+"scripts": {
+  "clean:upgradable": "rimraf ./.upgradable/ZKsync-era-test-node.json",
+  "test": "yarn clean:upgradable && hardhat test"
+},
+```
+
+Additionally, add this line to your `.gitignore`:
+
+```text filename=".gitignore"
+# ZKsync files
+.upgradable/ZKsync-era-test-node.json
+```
+
+<Alert tone="warning" solid>
+  It's advisable to keep the other files in the `.upgradable` directory
+  version-controlled to facilitate seamless contract upgrades on the Lens
+  Network.
+</Alert>
+
+### Task Redefinition Failed
+
+<Alert tone="valid" solid>
+  This issue should not impact projects created using the [Hardhat
+  boilerplate](#create-a-new-project).
+</Alert>
+
+If you encounter the error below while running `yarn hardhat test`:
+
+```bash
+Error HH209: Redefinition of task verify:etherscan failed. Unsupported operation adding mandatory (non optional) param definitions in an overridden task.
+
+For more info go to https://hardhat.org/HH209 or run Hardhat with --show-stack-traces
+```
+
+This issue is often caused by [Yarn Plug'n'Play (PnP)](https://yarnpkg.com/features/pnp) installation strategy and can be resolved by modifying your `.yarnrc.yml` file as follows:
+
+```yaml filename=".yarnrc.yml"
+nodeLinker: node-modules
+```
+
+Delete the following files:
+
+```bash
+.pnp.cjs
+.pnp.loader.mjs
+```
+
+Optionally: adding the following to your `.gitignore` file:
+
+```text filename=".gitignore"
+#!.yarn/cache
+.pnp.*
+```
+
+and then running `yarn install` again.
+
+### No Gas Amount Specified
+
+If you are migrating a project that involves sending or transferring native tokens (e.g. Ether on Mainnet, Matic on Polygon, etc.), you are likely to encounter the following error:
+
+```bash filename="Compilation Error"
+Error: You are using '<address payable>.send/transfer(<X>)' without providing the gas amount.
+Such calls will fail depending on the pubdata costs.
+
+Please use 'payable(<address>).call{value: <X>}("")' instead, but be careful with the
+reentrancy attack. `send` and `transfer` send limited amount of gas that prevents reentrancy,
+whereas `<address>.call{value: <X>}` sends all gas to the callee.
+
+Learn more about reentrancy at https://docs.soliditylang.org/en/latest/security-considerations.html#reentrancy
+
+You may disable this error with:
+    1. `suppressedErrors = ["sendtransfer"]` in standard JSON.
+    2. `--suppress-errors sendtransfer` in the CLI.
+   --> contracts/Lock.sol:26:7
+    |
+ 26 |         owner.transfer(address(this).balance);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Error HH600: Compilation failed
+```
+
+When dealing with transactions that send or transfer native tokens, avoid using the following patterns:
+
+```sol filename="AVOID"
+payable(addr).send(x) // or
+payable(addr).transfer(x)
+```
+
+These methods may not provide sufficient gas for calls that involve state changes requiring significant L2 gas for data processing.
+
+Instead, opt for the `call` method as shown below:
+
+```sol filename="GOOD"
+(bool success, ) = addr.call{value: msg.value}("");
+require(success, "Transfer failed.");
+```
+
+This approach is more reliable for ensuring transactions are processed successfully. For further details, see the [ZKsync best practices](https://docs.zksync.io/build/developer-reference/best-practices#use-call-over-send-or-transfer).
+
+================
+File: src/pages/chain/tools/account-abstraction/safe.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# Safe
+
+The Safe\{Core\} SDK is designed to simplify the integration of Safe smart accounts into your projects, providing a modular and customizable approach to account abstraction. It offers several integration options to cater to different development needs:
+
+- [Starter Kit](https://docs.safe.global/sdk/starter-kit): A simplified entry point for deploying new accounts and managing Safe transaction flows, including user operations, multi-signature transactions, and message handling.
+- [Protocol Kit](https://docs.safe.global/sdk/protocol-kit): Enables interaction with Safe smart accounts, allowing for the creation of new accounts, configuration updates, and transaction execution.
+- [API Kit](https://docs.safe.global/sdk/api-kit): Facilitates communication with the Safe Transaction Service API, enabling transaction sharing among signers and retrieval of account information such as configurations and transaction histories.
+- [Relay Kit](https://docs.safe.global/sdk/relay-kit): Supports transaction relaying, allowing users to pay transaction fees from their Safe account using native tokens, ERC-20 tokens, or through sponsored transactions.
+
+## Creating a Safe
+
+The guide will walkthrough the process of deploying a 2 of 3 Safe Smart Account to Lens Testnet using the [Protocol Kit](https://docs.safe.global/sdk/protocol-kit) SDK.
+
+<Steps>
+
+### Install Dependencies
+
+Install the required dependencies with your package manager of choice:
+
+```bash
+npm install @safe-global/protocol-kit @lens-chain/sdk@latest
+```
+
+### Import Modules
+
+```js
+import Safe, {
+  PredictedSafeProps,
+  SafeAccountConfig,
+} from "@safe-global/protocol-kit";
+import { chains } from "@lens-chain/sdk/viem";
+```
+
+### Initialize Protocol Kit
+
+```js
+const safeAccountConfig = {
+  owners: [
+    "0x81EdcF8e0a72c3300087891Bb3E992FAf285b2FC",
+    "0x482c27532517af746358D8E35AfCb3b2ca90A72B",
+    "0x28f875a08F320Cb5Fb6317c6C948fCA8663aC7e9",
+  ], // replace with owner addresses
+  threshold: 2, // replace with multi-signature threshold
+};
+
+const predictedSafe = {
+  safeAccountConfig,
+};
+
+const protocolKit = await Safe.init({
+  provider: chains.testnet.rpcUrls.default,
+  signer: process.env.PRIVATE_KEY, // replace with deployer private key
+  predictedSafe,
+});
+```
+
+### Predict Safe Address
+
+You can predict the Safe addres before deployment with the following method:
+
+```js
+const safeAddress = await protocolKit.getAddress();
+```
+
+### Create Deployment Transaction
+
+Create the deployment transaction to deploy a new Safe smart account:
+
+```js
+const deploymentTransaction =
+  await protocolKit.createSafeDeploymentTransaction();
+```
+
+### Execute Deployment Transaction
+
+```js
+const client = await protocolKit.getSafeProvider().getExternalSigner();
+
+const transactionHash = await client.sendTransaction({
+  to: deploymentTransaction.to,
+  value: BigInt(deploymentTransaction.value),
+  data: deploymentTransaction.data,
+  chain: chains.testnet,
+});
+
+const transactionReceipt = await client.waitForTransactionReceipt({
+  hash: transactionHash,
+});
+```
+
+### Re-Initialize Protocol Kit
+
+Once the deployment transaction is executed, connect the new Safe address to the Protocol Kit instance by calling the connect method. Once connected, operations can be performed by following the [Protocol Kit SDK reference](https://docs.safe.global/reference-sdk-protocol-kit/overview).
+
+```js
+const newProtocolKit = await protocolKit.connect({
+  safeAddress,
+});
+
+const isSafeDeployed = await newProtocolKit.isSafeDeployed();
+const safeAddress = await newProtocolKit.getAddress();
+const safeOwners = await newProtocolKit.getOwners();
+const safeThreshold = await newProtocolKit.getThreshold();
+```
+
+</Steps>
+
+================
+File: src/pages/chain/tools/account-abstraction/thirdweb.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# thirdweb
+
+## thirdweb Account Abstraction
+
+[thirdweb](https://portal.thirdweb.com/connect/account-abstraction/overview?utm_source=lens&utm_medium=docs) offers a complete platform to leverage account abstraction.
+
+Remove the clunky user experience of requiring gas & signatures for every onchain action.
+
+- Abstract away gas
+- Pre-audited account factory contracts
+- Built-in infra
+- Sponsorship policies
+
+## Get Started
+
+1. Sign up for a [free thirdweb account](https://thirdweb.com/team?utm_source=lens&utm_medium=docs)
+2. Visit [Account Abstraction Documentation](https://portal.thirdweb.com/connect/account-abstraction/how-it-works?utm_source=lens&utm_medium=docs) and [Account Abstraction Playground](https://playground.thirdweb.com/connect/account-abstraction/connect?utm_source=lens&utm_medium=docs)
+
+## thirdweb Engine
+
+[thirdweb Engine](https://portal.thirdweb.com/engine?utm_source=lens&utm_medium=docs) is a performant & secure scalable backend server to connect to the blockchain
+
+- **Familiar**: developers’ backend can easily interface with the product via HTTP calls
+- **Robust**: handles the complete set of of blockchain actions (read, write, signing & funds management)
+- **Reliable**: executes in a performant way every single time regardless of throughput
+
+## Get Started
+
+1. Sign up for a [free thirdweb account](https://thirdweb.com/team?utm_source=lens&utm_medium=docs)
+2. Visit the [engine dashboard](https://thirdweb.com/dashboard/engine?utm_source=lens&utm_medium=docs)
+3. Check out this [developers guide](https://blog.thirdweb.com/guides/blockchain-api-basics-series-backend-wallets-with-engine?utm_source=lens&utm_medium=docs)
+
+================
+File: src/pages/chain/tools/account-abstraction/zksync.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# ZKsync Paymasters
+
+**Paymasters** sponsor user transactions, allowing fees to be paid by apps or other entities, including with ERC-20 tokens. This feature enables better user experience by reducing friction for users to interact with Lens Testnet.
+
+For more information on creating a paymaster, see the [ZKsync Paymaster 101 guide](https://docs.zksync.io/zksync-era/guides/zksync-101/paymaster).
+
+================
+File: src/pages/chain/tools/bigquery/costs.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+# Understanding Query Costs
+
+BigQuery operates on a pay-as-you-go pricing model. Here's what you need to know:
+
+---
+
+## How Costs Are Calculated
+1. **Query Costs**:
+   - Charged based on data processed, not data returned
+   - Only scanned columns count towards processing
+   - For current pricing, check the [official BigQuery pricing page](https://cloud.google.com/bigquery/pricing)
+
+2. **Cost Estimation**:
+   - Estimated data to be processed
+   - Estimated cost
+   - Whether it fits in your free tier
+
+## Cost-Saving Best Practices
+
+1. **Write Efficient Queries**:
+```sql
+-- ❌ Expensive: Scans all columns
+SELECT * FROM `table_name`
+
+-- ✅ Better: Select only needed columns
+SELECT specific_column1, specific_column2 
+FROM `table_name`
+```
+
+2. **Use LIMIT While Testing**:
+```sql
+-- Always add LIMIT when testing new queries
+SELECT column1, column2 
+FROM `table_name`
+LIMIT 100
+```
+
+3. **Leverage Table Design**:
+   - Use partitioned tables to filter by date ranges
+   - Use clustered columns for frequently filtered fields
+   - Keep frequently joined columns in the same table when possible
+
+4. **Monitor Usage**:
+   - Set up billing alerts in Google Cloud Console
+   - Review "Query History" for cost patterns
+   - Set project-level quotas to prevent overages
+
+<Alert tone="info">
+  **Pro Tip**: Always use the "Query Validation" button before running large queries 
+  to check processing costs and avoid unexpected charges.
+</Alert>
+
+================
+File: src/pages/chain/tools/bigquery/examples.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+
+# BigQuery Usage Examples
+
+Learn how to interact with Lens Chain datasets using different programming languages and tools.
+
+---
+
+## Python
+
+Using the official Google Cloud client library:
+
+<MultiCodeBlock>
+    ```python filename="Mainnet"
+    from google.cloud import bigquery
+
+    # Initialize the client
+    client = bigquery.Client()
+
+    # Query recent publications
+    query = """
+    SELECT 
+        address,
+    FROM `lens-chain-mainnet.public.addresses` addresses
+    WHERE 
+    LIMIT 5
+    """
+
+    # Execute the query
+    query_job = client.query(query)
+
+    # Process results
+    for row in query_job:
+        print(f"Handle: {row.handle}, Posted at: {row.block_timestamp}")
+    ```
+    ```python filename="Testnet"
+    from google.cloud import bigquery
+
+    # Initialize the client
+    client = bigquery.Client()
+
+    # Query recent publications
+    query = """
+    SELECT 
+        address,
+    FROM `lens-chain-testnet.public.addresses` addresses
+    WHERE 
+    LIMIT 5
+    """
+
+    # Execute the query
+    query_job = client.query(query)
+
+    # Process results
+    for row in query_job:
+        print(f"Handle: {row.handle}, Posted at: {row.block_timestamp}")
+    ```
+</MultiCodeBlock>
+
+## Node.js
+
+Using the `@google-cloud/bigquery` package:
+
+
+<MultiCodeBlock>
+    ```javascript filename="Mainnet"
+    const {BigQuery} = require('@google-cloud/bigquery');
+
+    async function queryLens() {
+      const bigquery = new BigQuery();
+
+      const query = `
+        SELECT *
+        FROM `lens-chain-mainnet.public.transactions`
+        ORDER BY createdAt DESC LIMIT 10
+      `;
+
+      const [rows] = await bigquery.query(query);
+      console.log('Latest 10 transactions:', rows);
+    }
+    ```
+    ```javascript filename="Testnet"
+    const {BigQuery} = require('@google-cloud/bigquery');
+
+    async function queryLens() {
+      const bigquery = new BigQuery();
+
+      const query = `
+        SELECT *
+        FROM `lens-chain-testnet.public.transactions`
+        ORDER BY createdAt DESC LIMIT 10
+      `;
+
+      const [rows] = await bigquery.query(query);
+      console.log('Latest 10 transactions:', rows);
+    }
+    ```
+</MultiCodeBlock>
+
+## REST API
+
+Using the BigQuery REST API:
+
+<MultiCodeBlock>
+    ```bash filename="Mainnet"
+    curl -X POST 
+      -H "Authorization: Bearer $(gcloud auth print-access-token)" 
+      -H "Content-Type: application/json" 
+      https://bigquery.googleapis.com/bigquery/v2/projects/lens-public-data/queries 
+      -d '{
+        "query": "SELECT COUNT(*) as total_addresses FROM `lens-chain-mainnet.public.addresses`"
+      }'
+    ```
+    ```bash filename="Testnet"
+    curl -X POST 
+      -H "Authorization: Bearer $(gcloud auth print-access-token)" 
+      -H "Content-Type: application/json" 
+      https://bigquery.googleapis.com/bigquery/v2/projects/lens-public-data/queries 
+      -d '{
+        "query": "SELECT COUNT(*) as total_addresses FROM `lens-chain-testnet.public.addresses`"
+      }'
+    ```
+</MultiCodeBlock>
+
+## Common Query Examples
+
+### Get lastest transactions
+```sql
+SELECT * FROM lens-chain-testnet.public.transactions order by "createdAt" desc limit 10;
+```
+
+<Alert tone="info">
+  Remember to handle authentication appropriately in your applications. For local development, you can use the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install).
+</Alert>
+
+================
+File: src/pages/chain/tools/bigquery/introduction.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+import { Tabs }  from '@/components/Common/Tabs';
+import { TabItem }  from '@/components/Common/Tabs';
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+# Lens Chain Public Datasets
+
+Lens Chain on BigQuery
+
+---
+
+## Overview
+
+Lens Chain public datasets provide comprehensive access to all public data through Google BigQuery. This enables developers, analysts, and researchers to query and analyze social data from the Lens ecosystem using standard SQL.
+
+## Data Format
+
+In our source most of the data are stored in their raw binary format. When syncing with BigQuery, we transform this byte data into hexadecimal strings with the format `\x{string}`.
+
+### FORMAT_HEX Function
+
+To make the data Web3-friendly, we provide a public function called `FORMAT_HEX` that converts BigQuery's `\x` format to the standard Web3 `0x` format. Here's how to use it:
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+    SELECT
+      address as original_address,
+      `lens-chain-mainnet.public.FORMAT_HEX`(address) as web3_formatted_address
+    FROM `lens-chain-mainnet.public.addresses`
+    LIMIT 5;
+    ```
+    ```sql filename="Testnet"
+    SELECT
+      address as original_address,
+      `lens-chain-testnet.public.FORMAT_HEX`(address) as web3_formatted_address
+    FROM `lens-chain-testnet.public.addresses`
+    LIMIT 5;
+    ```
+</MultiCodeBlock>
+
+This will return results like:
+
+| original_address                           | web3_formatted_address                     |
+| ------------------------------------------ | ------------------------------------------ |
+| \x18e768e60d7d0b55a1a541f5771d2b18923fd264 | 0x18e768e60d7d0b55a1a541f5771d2b18923fd264 |
+| \x0000000000000000000000000000000000000000 | 0x0000000000000000000000000000000000000000 |
+| \x24662809c579cb21b78f7c7e694868437ef0ff72 | 0x24662809c579cb21b78f7c7e694868437ef0ff72 |
+| \x3cb3246cfc9f48d00ae431543512033dd1fd7819 | 0x3cb3246cfc9f48d00ae431543512033dd1fd7819 |
+| \x1555c0020241a007618560f8b5e65f55b2ba1963 | 0x1555c0020241a007618560f8b5e65f55b2ba1963 |
+
+<Alert tone="info">
+  All data in these datasets is public information from Lens Chain. The datasets
+  are update**d eve**ry 15 minutes to reflect the latest network activity.
+</Alert>
+
+================
+File: src/pages/chain/tools/bigquery/schemas.mdx
+================
+export const meta = {
+  showBreadcrumbs: false,
+  showTableOfContents: true,
+  showPrev: true,
+  showNext: true,
+};
+
+import Layout from "@/components/Layouts/Mdx";
+import { routes } from "@/utils/routes";
+import { Tabs }  from '@/components/Common/Tabs';
+import { TabItem }  from '@/components/Common/Tabs';
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+
+{/* Start of the page content */}
+# Lens Chain BigQuery Schemas
+
+Tables Schema of Lens Chain BigQuery.
+
+---
+
+## addresses
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+SELECT * FROM `lens-chain-mainnet.public.addresses` LIMIT 1;
+    ```
+    ```sql filename="Testnet"
+SELECT * FROM `lens-chain-testnet.public.addresses` LIMIT 1;
+    ```
+</MultiCodeBlock>
+
+This table stores information about all addresses on the network, including smart contracts.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| createdAt | timestamp | Timestamp when this record was created |
+| updatedAt | timestamp | Timestamp when this record was last updated |
+| address | bytea | The blockchain address (in bytes format) |
+| bytecode | bytea | Contract bytecode for smart contract addresses |
+| createdInBlockNumber | bigint | Block number when this address was created |
+| creatorTxHash | bytea | Transaction hash that created this address |
+| creatorAddress | bytea | Address that created this address (contract deployer) |
+| createdInLogIndex | integer | Log index within the block where this address was created |
+| isEvmLike | boolean | Whether the address follows EVM address format |
+
+[Back to top](#lens-chain-bigquery-schemas)
+
+## blocks
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+SELECT * FROM `lens-chain-mainnet.public.blocks` LIMIT 1;
+    ```
+    ```sql filename="Testnet"
+SELECT * FROM `lens-chain-testnet.public.blocks` LIMIT 1;
+    ```
+</MultiCodeBlock>
+
+This table contains information about each block in the blockchain.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| createdAt | timestamp | Timestamp when this record was created |
+| updatedAt | timestamp | Timestamp when this record was last updated |
+| number | bigint | Block number |
+| nonce | varchar | Block nonce value |
+| difficulty | integer | Mining difficulty at this block |
+| gasLimit | varchar(128) | Maximum gas allowed in this block |
+| gasUsed | varchar(128) | Total gas used by all transactions in this block |
+| baseFeePerGas | varchar(128) | Base fee per gas unit in this block |
+| l1BatchNumber | bigint | Layer 1 batch number that includes this block |
+| l1TxCount | integer | Number of L1 transactions in this block |
+| l2TxCount | integer | Number of L2 transactions in this block |
+| hash | bytea | Block hash |
+| parentHash | bytea | Hash of the parent block |
+| miner | bytea | Address of the miner/validator who produced this block |
+| extraData | bytea | Additional data included in the block |
+| timestamp | timestamp | Timestamp when the block was mined |
+
+[Back to top](#lens-chain-bigquery-schemas)
+
+## transactions
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+SELECT * FROM `lens-chain-mainnet.public.transactions` LIMIT 1;
+    ```
+    ```sql filename="Testnet"
+SELECT * FROM `lens-chain-testnet.public.transactions` LIMIT 1;
+    ```
+</MultiCodeBlock>
+
+This table stores all transactions processed on the network.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| createdAt | timestamp | Timestamp when this record was created |
+| updatedAt | timestamp | Timestamp when this record was last updated |
+| number | bigint | Unique transaction identifier |
+| nonce | bigint | Transaction nonce (unique per sender address) |
+| transactionIndex | integer | Index position of transaction in the block |
+| gasLimit | varchar(128) | Maximum gas allowed for this transaction |
+| gasPrice | varchar(128) | Gas price in wei |
+| maxFeePerGas | varchar(128) | Maximum fee per gas (EIP-1559) |
+| maxPriorityFeePerGas | varchar(128) | Maximum priority fee per gas (EIP-1559) |
+| value | varchar(128) | Amount of cryptocurrency transferred |
+| chainId | integer | Chain identifier |
+| blockNumber | bigint | Block number where this transaction was included |
+| type | integer | Transaction type |
+| accessList | jsonb | Access list for EIP-2930 transactions |
+| l1BatchNumber | bigint | Layer 1 batch number that includes this transaction |
+| fee | varchar | Transaction fee |
+| isL1Originated | boolean | Whether the transaction originated from Layer 1 |
+| receivedAt | timestamp | Timestamp when the transaction was received by the network |
+| hash | bytea | Transaction hash |
+| to | bytea | Recipient address |
+| from | bytea | Sender address |
+| data | bytea | Transaction data/input |
+| blockHash | bytea | Hash of the block containing this transaction |
+| receiptStatus | integer | Transaction receipt status (1 = success, 0 = failure) |
+| gasPerPubdata | varchar | Gas per public data |
+| error | varchar | Error message if the transaction failed |
+| revertReason | varchar | Reason for transaction reversion if applicable |
+
+[Back to top](#lens-chain-bigquery-schemas)
+
+## transactionReceipts
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+SELECT * FROM `lens-chain-mainnet.public.transactionReceipts` LIMIT 1;
+    ```
+    ```sql filename="Testnet"
+SELECT * FROM `lens-chain-testnet.public.transactionReceipts` LIMIT 1;
+    ```
+</MultiCodeBlock>
+
+This table contains the receipts generated after transaction execution.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| createdAt | timestamp | Timestamp when this record was created |
+| updatedAt | timestamp | Timestamp when this record was last updated |
+| number | bigint | Unique receipt identifier |
+| transactionIndex | integer | Index position of transaction in the block |
+| type | integer | Receipt type |
+| gasUsed | varchar(128) | Amount of gas used by this transaction |
+| effectiveGasPrice | varchar(128) | Effective gas price for this transaction |
+| blockNumber | bigint | Block number containing this transaction |
+| cumulativeGasUsed | varchar(128) | Cumulative gas used up to this transaction in the block |
+| byzantium | boolean | Whether the receipt uses Byzantium format |
+| status | integer | Transaction status code |
+| transactionHash | bytea | Hash of the transaction |
+| to | bytea | Recipient address |
+| from | bytea | Sender address |
+| contractAddress | bytea | Address of newly created contract, if applicable |
+| root | bytea | State root (pre-Byzantium) |
+| logsBloom | bytea | Bloom filter for indexed event logs |
+| blockHash | bytea | Hash of the block containing this transaction |
+
+[Back to top](#lens-chain-bigquery-schemas)
+
+## logs
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+SELECT * FROM `lens-chain-mainnet.public.logs` LIMIT 1;
+    ```
+    ```sql filename="Testnet"
+SELECT * FROM `lens-chain-testnet.public.logs` LIMIT 1;
+    ```
+</MultiCodeBlock>
+
+This table stores event logs emitted during transaction execution.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| createdAt | timestamp | Timestamp when this record was created |
+| updatedAt | timestamp | Timestamp when this record was last updated |
+| number | bigint | Unique log identifier |
+| blockNumber | bigint | Block number containing this log |
+| transactionIndex | integer | Index position of transaction in the block |
+| removed | boolean | Whether the log was removed due to chain reorganization |
+| logIndex | integer | Index position of log in the transaction |
+| transactionHash | bytea | Hash of the transaction that generated this log |
+| address | bytea | Address that generated this log |
+| data | bytea | Non-indexed log parameters |
+| topics | ARRAY | Indexed log topics |
+| timestamp | timestamp | Timestamp of the block containing this log |
+
+[Back to top](#lens-chain-bigquery-schemas)
+
+## transfers
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+SELECT * FROM `lens-chain-mainnet.public.transfers` LIMIT 1;
+    ```
+    ```sql filename="Testnet"
+SELECT * FROM `lens-chain-testnet.public.transfers` LIMIT 1;
+    ```
+</MultiCodeBlock>
+
+This table records all asset transfers that occur on the network.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| createdAt | timestamp | Timestamp when this record was created |
+| updatedAt | timestamp | Timestamp when this record was last updated |
+| number | bigint | Unique transfer identifier |
+| blockNumber | bigint | Block number containing this transfer |
+| amount | varchar(128) | Amount transferred |
+| type | USER-DEFINED | Transfer type |
+| fields | jsonb | Additional fields specific to this transfer |
+| from | bytea | Sender address |
+| to | bytea | Recipient address |
+| transactionHash | bytea | Hash of the transaction that caused this transfer |
+| tokenAddress | bytea | Address of the token being transferred |
+| logIndex | integer | Index position of the log that recorded this transfer |
+| transactionIndex | integer | Index position of transaction in the block |
+| timestamp | timestamp | Timestamp of the block containing this transfer |
+| isFeeOrRefund | boolean | Whether this transfer is a fee payment or refund |
+| isInternal | boolean | Whether this is an internal transfer |
+| tokenType | USER-DEFINED | Type of token being transferred |
+
+[Back to top](#lens-chain-bigquery-schemas)
+
+## addressTransfers
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+SELECT * FROM `lens-chain-mainnet.public.addressTransfers` LIMIT 1;
+    ```
+    ```sql filename="Testnet"
+SELECT * FROM `lens-chain-testnet.public.addressTransfers` LIMIT 1;
+    ```
+</MultiCodeBlock>
+
+This table maps addresses to their transfers for efficient querying.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| createdAt | timestamp | Timestamp when this record was created |
+| updatedAt | timestamp | Timestamp when this record was last updated |
+| number | bigint | Unique record identifier |
+| transferNumber | bigint | Reference to the transfer.number |
+| address | bytea | The address involved in the transfer |
+| blockNumber | bigint | Block number containing this transfer |
+| timestamp | timestamp | Timestamp of the block containing this transfer |
+| isFeeOrRefund | boolean | Whether this transfer is a fee payment or refund |
+| logIndex | integer | Index position of the log that recorded this transfer |
+| tokenAddress | bytea | Address of the token being transferred |
+| fields | jsonb | Additional fields specific to this transfer |
+| isInternal | boolean | Whether this is an internal transfer |
+| tokenType | USER-DEFINED | Type of token being transferred |
+| type | USER-DEFINED | Transfer type |
+
+[Back to top](#lens-chain-bigquery-schemas)
+
+## addressTransactions
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+SELECT * FROM `lens-chain-mainnet.public.addressTransactions` LIMIT 1;
+    ```
+    ```sql filename="Testnet"
+SELECT * FROM `lens-chain-testnet.public.addressTransactions` LIMIT 1;
+    ```
+</MultiCodeBlock>
+
+This table maps addresses to transactions for efficient querying.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| createdAt | timestamp | Timestamp when this record was created |
+| updatedAt | timestamp | Timestamp when this record was last updated |
+| number | bigint | Unique record identifier |
+| transactionHash | bytea | Transaction hash |
+| address | bytea | Address involved in the transaction |
+| blockNumber | bigint | Block number containing this transaction |
+| receivedAt | timestamp | Timestamp when the transaction was received |
+| transactionIndex | integer | Index position of transaction in the block |
+
+[Back to top](#lens-chain-bigquery-schemas)
+
+## tokens
+
+<MultiCodeBlock>
+    ```sql filename="Mainnet"
+SELECT * FROM `lens-chain-mainnet.public.tokens` LIMIT 1;
+    ```
+    ```sql filename="Testnet"
+SELECT * FROM `lens-chain-testnet.public.tokens` LIMIT 1;
+    ```
+</MultiCodeBlock>
+
+This table stores information about tokens on the network.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| createdAt | timestamp | Timestamp when this record was created |
+| updatedAt | timestamp | Timestamp when this record was last updated |
+| address | bytea | Token address |
+| name | varchar | Token name |
+| symbol | varchar | Token symbol |
+| decimals | integer | Token decimal places |
+| type | USER-DEFINED | Token type (e.g. ERC-20, ERC-721, ERC-1155) |
+| blockNumber | bigint | Block number where the token was discovered |
+| transactionHash | bytea | Transaction hash where the token was discovered |
+| logIndex | integer | Log index where the token was discovered |
+| isEvmLike | boolean | Whether the token address follows EVM format |

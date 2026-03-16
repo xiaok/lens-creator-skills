@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lens Creator Skills"
+  short_description: "Build Lens apps with defaults-first architecture"
+  default_prompt: "Use $lens-creator-skills to design or implement a Lens app with default graph, feed, and namespace unless customization is required."
